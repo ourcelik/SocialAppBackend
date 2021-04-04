@@ -64,6 +64,11 @@ namespace DataAccess.Concrete.EntityFramework
             context?.DisposeAsync();
             return profile.SingleOrDefault();
         }
+
+        public UserProfile GetUserProfileByUserName(string userName)
+        {
+            throw new NotImplementedException();
+        }
     }
-    }
+    
 }

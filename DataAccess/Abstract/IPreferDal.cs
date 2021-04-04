@@ -1,7 +1,7 @@
 ﻿using Core.DataAccess;
 using Entities.Concrete;
 
-namespace DataAccess
+namespace DataAccess.Abstract
 {
     public interface IPreferDal : IEntityRepository<Prefer>
     {
