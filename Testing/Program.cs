@@ -11,11 +11,11 @@ namespace Testing
         {
             CreateTest1();
         }
-        public static void CreateTest1()
+        async public static void CreateTest1()
         {
             UserManager _userManager;
             _userManager = new UserManager(new EfUserDal());
-            _userManager.Add(new User()
+            await _userManager.AddAsync(new User()
             {
                 Username= "ourcelik",
                 _Password= "deneme",

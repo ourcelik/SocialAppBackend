@@ -21,6 +21,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<CR_Member> CR_Members { get; set; }
         public DbSet<Like_Kind> Like_Kinds{ get; set; }
         public DbSet<Liked> Likeds { get; set; }
+        public DbSet<Chat_level> Chat_Levels { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<Notification> Notifications{ get; set; }
         public DbSet<Photo> Photos { get; set; }
@@ -30,6 +31,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<R_Member> R_Members { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Profile_Answer> Profile_Answers { get; set; }
+
 
 
 

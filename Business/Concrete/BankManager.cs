@@ -82,7 +82,7 @@ namespace Business.Concrete
             UserSpecificCoin data;
             try
             {
-                data = _bankDal.getgol(id);
+                data = _bankDal.GetGoldCoinByUserId(id);
             }
             catch (Exception)
             {
