@@ -3,7 +3,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface ILike_KindDal : IEntityRepository<Like_Kind>
+    public interface ILikeKindDal : IEntityRepository<Like_Kind>
     {
 
     }

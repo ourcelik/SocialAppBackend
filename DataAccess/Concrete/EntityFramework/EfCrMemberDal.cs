@@ -4,7 +4,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCrMemberDal : EfEntityRepositoryBase<CR_Member, SocialNetworkContext>,ICrMemberDal
+    public class EfCRMemberDal : EfEntityRepositoryBase<CR_Member, SocialNetworkContext>,ICrMemberDal
     {
 
     }
