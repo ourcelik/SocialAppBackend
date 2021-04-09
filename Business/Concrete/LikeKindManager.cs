@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    class LikeKindManager : ILikeKindService
+    public class LikeKindManager : ILikeKindService
     {
-        ILikeKindDal _likeKindDal;
+        readonly ILikeKindDal _likeKindDal;
         public LikeKindManager(ILikeKindDal likeKindDal)
         {
             _likeKindDal = likeKindDal;

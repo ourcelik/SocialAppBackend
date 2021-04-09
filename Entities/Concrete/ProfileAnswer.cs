@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Profile_Answer:IEntity
+    public class ProfileAnswer:IEntity
     {
+        public int ProfileAnswerId { get; set; }
         public int AnswerId { get; set; }
         public int ProfileId { get; set; }
         public int QuestionId { get; set; }

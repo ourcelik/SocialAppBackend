@@ -10,8 +10,9 @@ namespace Business.Abstract
 {
     public interface IMatchService
     {
-        public IDataResult<List<Match>> GetAllMatches();
-        public IDataResult<List<Match>> GetMatchesByUserId(int id);
-        public IDataResult<List<Match>> GetMatchesByLevelId(int id);
+        public Task<IDataResult<List<Match>>> GetAllMatches();
+        public Task<IDataResult<List<Match>>>  GetMatchesByUserId(int id);
+        public Task<IDataResult<List<Match>>> GetMatchesByLevelId(int id);
+        public Task<IDataResult<Match>> GetMatchById(int id);
     }
 }

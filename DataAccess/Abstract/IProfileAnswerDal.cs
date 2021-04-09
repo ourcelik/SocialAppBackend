@@ -3,7 +3,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface IProfileAnswerDal : IEntityRepository<Profile_Answer>
+    public interface IProfileAnswerDal : IEntityRepository<ProfileAnswer>
     {
 
     }

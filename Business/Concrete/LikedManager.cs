@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    class LikedManager : ILikedService
+    public class LikedManager : ILikedService
     {
-        ILikedDal _likedDal;
+        readonly ILikedDal _likedDal;
         public LikedManager(ILikedDal likedDal)
         {
             _likedDal = likedDal;

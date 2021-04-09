@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    class ConstantRoomManager : IConstantRoomService
+    public class ConstantRoomManager : IConstantRoomService
     {
-        IConstantRoomDal _roomDal;
+        readonly IConstantRoomDal _roomDal;
         public ConstantRoomManager(IConstantRoomDal roomDal)
         {
             _roomDal = roomDal;

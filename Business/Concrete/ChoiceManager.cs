@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    class ChoiceManager : IChoiceService
+    public class ChoiceManager : IChoiceService
     {
-        IChoiceDal _choiceDal;
+        readonly IChoiceDal _choiceDal;
         public ChoiceManager(IChoiceDal choiceDal)
         {
             _choiceDal = choiceDal;

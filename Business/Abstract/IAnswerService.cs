@@ -7,9 +7,9 @@ namespace Business.Abstract
 {
     public interface IAnswerService
     {
-        public  Task<IDataResult<List<Profile_Answer>>> GetAllAsync();
-        public  Task<IDataResult<List<Profile_Answer>>> GetAnswersByProfileIdAsync(int id);
-        public  Task<IDataResult<Profile_Answer>> GetAnswerByAnswerIdAsync(int id);
-        public  Task<IDataResult<List<Profile_Answer>>> GetAnswersByQuestionIdAsync(int id);
+        public  Task<IDataResult<List<ProfileAnswer>>> GetAllAsync();
+        public  Task<IDataResult<List<ProfileAnswer>>> GetAnswersByProfileIdAsync(int id);
+        public  Task<IDataResult<ProfileAnswer>> GetAnswerByAnswerIdAsync(int id);
+        public  Task<IDataResult<List<ProfileAnswer>>> GetAnswersByQuestionIdAsync(int id);
     }
 }

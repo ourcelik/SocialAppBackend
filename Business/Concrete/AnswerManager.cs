@@ -10,14 +10,14 @@ namespace Business.Concrete
 {
     public class AnswerManager : IAnswerService
     {
-        IProfileAnswerDal _answerDal;
+        readonly IProfileAnswerDal _answerDal;
         public AnswerManager(IProfileAnswerDal profileAnswerDal)
         {
             _answerDal = profileAnswerDal;
         }
-        async public Task<IDataResult<List<Profile_Answer>>> GetAllAsync()
+        async public Task<IDataResult<List<ProfileAnswer>>> GetAllAsync()
         {
-            List<Profile_Answer> data;
+            List<ProfileAnswer> data;
             try
             {
                 data = await _answerDal.GetAllAsync();
@@ -26,14 +26,14 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<List<Profile_Answer>>();
+                return new ErrorDataResult<List<ProfileAnswer>>();
             }
-            return new SuccessDataResult<List<Profile_Answer>>(data);
+            return new SuccessDataResult<List<ProfileAnswer>>(data);
         }
 
-        async public Task<IDataResult<Profile_Answer>> GetAnswerByAnswerIdAsync(int id)
+        async public Task<IDataResult<ProfileAnswer>> GetAnswerByAnswerIdAsync(int id)
         {
-            Profile_Answer data;
+            ProfileAnswer data;
             try
             {
                 data = await _answerDal.GetAsync(p => p.AnswerId == id);
@@ -41,14 +41,14 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<Profile_Answer>();
+                return new ErrorDataResult<ProfileAnswer>();
             }
-            return new SuccessDataResult<Profile_Answer>(data);
+            return new SuccessDataResult<ProfileAnswer>(data);
         }
 
-        async public Task<IDataResult<List<Profile_Answer>>> GetAnswersByProfileIdAsync(int id)
+        async public Task<IDataResult<List<ProfileAnswer>>> GetAnswersByProfileIdAsync(int id)
         {
-            List <Profile_Answer> data;
+            List <ProfileAnswer> data;
             try
             {
                 data = await _answerDal.GetAllAsync(p => p.ProfileId == id);
@@ -56,14 +56,14 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<List<Profile_Answer>>();
+                return new ErrorDataResult<List<ProfileAnswer>>();
             }
-            return new SuccessDataResult<List<Profile_Answer>>(data);
+            return new SuccessDataResult<List<ProfileAnswer>>(data);
         }
 
-        async public Task<IDataResult<List<Profile_Answer>>> GetAnswersByQuestionIdAsync(int id)
+        async public Task<IDataResult<List<ProfileAnswer>>> GetAnswersByQuestionIdAsync(int id)
         {
-            List<Profile_Answer> data;
+            List<ProfileAnswer> data;
             try
             {
                 data = await _answerDal.GetAllAsync(p => p.QuestionId == id);
@@ -71,9 +71,9 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<List<Profile_Answer>>();
+                return new ErrorDataResult<List<ProfileAnswer>>();
             }
-            return new SuccessDataResult<List<Profile_Answer>>(data);
+            return new SuccessDataResult<List<ProfileAnswer>>(data);
         }
     }
 }

@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    class ChatLevelManager : IChatLevelService
+    public class ChatLevelManager : IChatLevelService
     {
-        IChatLevelDal _chatLevelDal;
+        readonly IChatLevelDal _chatLevelDal;
         public ChatLevelManager(IChatLevelDal chatLevelDal)
         {
             _chatLevelDal = chatLevelDal;
