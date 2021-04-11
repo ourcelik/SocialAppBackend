@@ -11,10 +11,12 @@ namespace Business.Concrete
     public class AnswerManager : IAnswerService
     {
         readonly IProfileAnswerDal _answerDal;
-        public AnswerManager(IProfileAnswerDal profileAnswerDal)
+
+        public AnswerManager(IProfileAnswerDal answerDal)
         {
-            _answerDal = profileAnswerDal;
+            _answerDal = answerDal;
         }
+
         async public Task<IDataResult<List<ProfileAnswer>>> GetAllAsync()
         {
             List<ProfileAnswer> data;

@@ -30,7 +30,8 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Question> Questions { get; set; }
         public DbSet<R_Member> R_Members { get; set; }
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<ProfileAnswer> Profile_Answers { get; set; }
+        public DbSet<ProfileAnswer> profileAnswers { get; set; }
+        public DbSet<ProfileQuestion> ProfileQuestions { get; set; }
 
 
 
