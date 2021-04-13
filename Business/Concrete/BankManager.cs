@@ -11,7 +11,7 @@ namespace Business.Concrete
 {
     public class BankManager : IBankService
     {
-        IBankDal _bankDal;
+        readonly IBankDal _bankDal;
         public BankManager(IBankDal bankDal)
         {
             _bankDal = bankDal;

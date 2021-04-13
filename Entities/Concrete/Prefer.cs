@@ -5,15 +5,15 @@ namespace Entities.Concrete
     public class Prefer : IEntity
     {
         public int PreferId { get; set; }
-        public int Min_age { get; set; }
-        public int Max_age { get; set; }
-        public int Max_distance { get; set; }
-        public int Gender_prefer { get; set; }
-        public byte Universal { get; set; }
-        public byte Show_me { get; set; }
-        public byte Autoplay { get; set; }
-        public byte Last_seen { get; set; }
-        public byte App_voice { get; set; }
+        public int MinAge { get; set; }
+        public int MaxAge { get; set; }
+        public int MaxDistance { get; set; }
+        public int GenderPrefer { get; set; }
+        public bool Universal { get; set; }
+        public bool ShowMe { get; set; }
+        public bool Autoplay { get; set; }
+        public bool LastSeen { get; set; }
+        public bool AppVoice { get; set; }
 
     }
 

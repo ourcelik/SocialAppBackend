@@ -7,7 +7,7 @@ namespace Entities.Concrete
         public int MatchId { get; set; }
         public int MatchUserId { get; set; }
         public int MatchedUserId { get; set; }
-        public int Chat_LevelId { get; set; }
+        public int ChatLevelId { get; set; }
     }
 
 }

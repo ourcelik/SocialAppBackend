@@ -9,9 +9,9 @@ namespace Business.Abstract
     public interface IChatLevelService
     {
         public IDataResult<SpecificChatLevel> GetChatLevelByMatch(int id);
-        public Task<IDataResult<List<Chat_level>>> GetAll();
-        public Task<IDataResult<Chat_level>> GetByChatLevelId(int id);
-        public Task<IDataResult<List<Chat_level>>> GetByChatLevel(string level);
+        public Task<IDataResult<List<ChatLevel>>> GetAll();
+        public Task<IDataResult<ChatLevel>> GetByChatLevelId(int id);
+        public Task<IDataResult<List<ChatLevel>>> GetByChatLevel(string level);
 
 
 

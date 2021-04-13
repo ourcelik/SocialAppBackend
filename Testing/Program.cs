@@ -18,7 +18,7 @@ namespace Testing
             await _userManager.AddAsync(new User()
             {
                 Username= "ourcelik",
-                _Password= "deneme",
+                UserPassword= "deneme",
                 Mail = "deneme",
                 TelNo = "000000",
                 ProfileId =1

@@ -2,12 +2,11 @@
 
 namespace Entities.Concrete
 {
-    public class R_Member : IEntity
+    public class RoomMember : IEntity
     {
-        public int RId { get; set; }
+        public int RoomMemberId { get; set; }
         public int RoomId { get; set; }
         public int UserId { get; set; }
-        public int RankId { get; set; }
     }
 
 }

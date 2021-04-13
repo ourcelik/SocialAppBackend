@@ -2,9 +2,9 @@
 
 namespace Entities.Concrete
 {
-    public class Chat_level : IEntity
+    public class ChatLevel : IEntity
     {
-        public int ChatId { get; set; }
+        public int ChatLevelId { get; set; }
         public string Level { get; set; }
     }
 

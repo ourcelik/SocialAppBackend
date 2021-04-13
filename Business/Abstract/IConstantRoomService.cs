@@ -7,9 +7,9 @@ namespace Business.Abstract
 {
     public interface IConstantRoomService
     {
-        public Task<IDataResult<List<Constant_room>>> GetByChatLevel(int id);
-        public Task<IDataResult<List<Constant_room>>> GetAllConstantRoom();
-        public Task<IDataResult<Constant_room>> GetByConstantRoomId(int id);
+        public Task<IDataResult<List<ConstantRoom>>> GetByChatLevel(int id);
+        public Task<IDataResult<List<ConstantRoom>>> GetAllConstantRoom();
+        public Task<IDataResult<ConstantRoom>> GetByConstantRoomId(int id);
 
     }
 }

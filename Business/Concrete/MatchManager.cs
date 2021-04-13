@@ -31,7 +31,7 @@ namespace Business.Concrete
 
         async public Task<IDataResult<List<Match>>> GetMatchesByLevelId(int LevelId)
         {
-            var data = await _matchDal.GetAllAsync(m=> m.Chat_LevelId == LevelId);
+            var data = await _matchDal.GetAllAsync(m=> m.ChatLevelId == LevelId);
             return new SuccessDataResult<List<Match>>(data);
         }
 

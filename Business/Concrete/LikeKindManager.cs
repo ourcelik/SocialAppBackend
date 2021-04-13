@@ -17,10 +17,10 @@ namespace Business.Concrete
         {
             _likeKindDal = likeKindDal;
         }
-        async public Task<IDataResult<List<Like_Kind>>> GetLikeKinds()
+        async public Task<IDataResult<List<LikeKind>>> GetLikeKinds()
         {
             var data = await _likeKindDal.GetAllAsync();
-            return new SuccessDataResult<List<Like_Kind>>(data);
+            return new SuccessDataResult<List<LikeKind>>(data);
         }
     }
 }

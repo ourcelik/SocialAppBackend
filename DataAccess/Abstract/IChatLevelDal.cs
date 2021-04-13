@@ -5,7 +5,7 @@ using Entities.DTOs;
 
 namespace DataAccess.Abstract
 {
-    public interface IChatLevelDal:IEntityRepository<Chat_level>
+    public interface IChatLevelDal:IEntityRepository<ChatLevel>
     {
         public SpecificChatLevel GetChatLevelByMatchId(int id);
     }

@@ -17,7 +17,7 @@ namespace DataAccess.Concrete.EntityFramework
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
-                       on u.Coin_BankId equals b.BankId
+                       on u.CoinBankId equals b.BankId
                        where u.UserId == id
                        select new UserCoinBank
                        {
@@ -35,7 +35,7 @@ namespace DataAccess.Concrete.EntityFramework
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
-                       on u.Coin_BankId equals b.BankId
+                       on u.CoinBankId equals b.BankId
                        where u.UserId == id
                        select new UserSpecificCoin
                        {
@@ -51,7 +51,7 @@ namespace DataAccess.Concrete.EntityFramework
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
-                       on u.Coin_BankId equals b.BankId
+                       on u.CoinBankId equals b.BankId
                        select new UserSpecificCoin
                        {
                            Id = u.UserId,
@@ -66,7 +66,7 @@ namespace DataAccess.Concrete.EntityFramework
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
-                       on u.Coin_BankId equals b.BankId
+                       on u.CoinBankId equals b.BankId
                        where u.UserId == id
                        select new UserSpecificCoin
                        {
@@ -82,7 +82,7 @@ namespace DataAccess.Concrete.EntityFramework
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
-                       on u.Coin_BankId equals b.BankId
+                       on u.CoinBankId equals b.BankId
                        select new UserSpecificCoin
                        {
                            Id = u.UserId,
@@ -97,7 +97,7 @@ namespace DataAccess.Concrete.EntityFramework
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
-                       on u.Coin_BankId equals b.BankId
+                       on u.CoinBankId equals b.BankId
                        where u.UserId == id
                        select new UserSpecificCoin
                        {
@@ -113,7 +113,7 @@ namespace DataAccess.Concrete.EntityFramework
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
-                       on u.Coin_BankId equals b.BankId
+                       on u.CoinBankId equals b.BankId
                        select new UserSpecificCoin
                        {
                            Id = u.UserId,

@@ -4,7 +4,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfProfileAnswerDal : EfEntityRepositoryBase<ProfileAnswer, SocialNetworkContext>,IProfileAnswerDal
+    public class EfRankDal : EfEntityRepositoryBase<Rank, SocialNetworkContext>,IRankDal
     {
 
     }

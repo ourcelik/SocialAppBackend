@@ -3,7 +3,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface IRMemberDal : IEntityRepository<R_Member>
+    public interface IRMemberDal : IEntityRepository<RoomMember>
     {
 
     }

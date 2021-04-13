@@ -17,22 +17,22 @@ namespace Business.Concrete
         {
             _roomDal = roomDal;
         }
-        async public Task<IDataResult<List<Constant_room>>> GetAllConstantRoom()
+        async public Task<IDataResult<List<ConstantRoom>>> GetAllConstantRoom()
         {
             var data = await _roomDal.GetAllAsync();
-            return new SuccessDataResult<List<Constant_room>>(data);
+            return new SuccessDataResult<List<ConstantRoom>>(data);
         }
 
-        async public Task<IDataResult<List<Constant_room>>> GetByChatLevel(int id)
+        async public Task<IDataResult<List<ConstantRoom>>> GetByChatLevel(int id)
         {
-            var data = await _roomDal.GetAllAsync(r => r.Chat_LevelId == id);
-            return new SuccessDataResult<List<Constant_room>>(data);
+            var data = await _roomDal.GetAllAsync(r => r.ChatLevelId == id);
+            return new SuccessDataResult<List<ConstantRoom>>(data);
         }
 
-        async public Task<IDataResult<Constant_room>> GetByConstantRoomId(int id)
+        async public Task<IDataResult<ConstantRoom>> GetByConstantRoomId(int id)
         {
             var data = await _roomDal.GetAsync(r => r.RoomId == id);
-            return new SuccessDataResult<Constant_room>(data);
+            return new SuccessDataResult<ConstantRoom>(data);
         }
     }
 }

@@ -19,9 +19,9 @@ namespace Business.Concrete
             _chatLevelDal = chatLevelDal;
         }
 
-        async public Task<IDataResult<List<Chat_level>>> GetAll()
+        async public Task<IDataResult<List<ChatLevel>>> GetAll()
         {
-            List<Chat_level> data;
+            List<ChatLevel> data;
             try
             {
                 data = await _chatLevelDal.GetAllAsync();
@@ -29,14 +29,14 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<List<Chat_level>>();
+                return new ErrorDataResult<List<ChatLevel>>();
             }
-            return new SuccessDataResult<List<Chat_level>>(data);
+            return new SuccessDataResult<List<ChatLevel>>(data);
         }
 
-        async public Task<IDataResult<List<Chat_level>>> GetByChatLevel(string level)
+        async public Task<IDataResult<List<ChatLevel>>> GetByChatLevel(string level)
         {
-            List<Chat_level> data;
+            List<ChatLevel> data;
             try
             {
                 data = await _chatLevelDal.GetAllAsync(c => c.Level ==level);
@@ -44,24 +44,24 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<List<Chat_level>>();
+                return new ErrorDataResult<List<ChatLevel>>();
             }
-            return new SuccessDataResult<List<Chat_level>>(data);
+            return new SuccessDataResult<List<ChatLevel>>(data);
         }
 
-        async public Task<IDataResult<Chat_level>> GetByChatLevelId(int id)
+        async public Task<IDataResult<ChatLevel>> GetByChatLevelId(int id)
         {
-            Chat_level data;
+            ChatLevel data;
             try
             {
-                data = await _chatLevelDal.GetAsync(c => c.ChatId == id);
+                data = await _chatLevelDal.GetAsync(c => c.ChatLevelId == id);
             }
             catch (Exception)
             {
 
-                return new ErrorDataResult<Chat_level>();
+                return new ErrorDataResult<ChatLevel>();
             }
-            return new SuccessDataResult<Chat_level>(data);
+            return new SuccessDataResult<ChatLevel>(data);
         }
 
         public IDataResult<SpecificChatLevel> GetChatLevelByMatch(int id)

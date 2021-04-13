@@ -2,7 +2,7 @@
 
 namespace Entities.Concrete
 {
-    public class Like_Kind : IEntity
+    public class LikeKind : IEntity
     {
         public int LikeId { get; set; }
         public string Kind { get; set; }

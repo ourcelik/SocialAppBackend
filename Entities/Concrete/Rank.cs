@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Choice:IEntity
+    public class Rank:IEntity
     {
-        public int ChoiceId { get; set; }
-        public string ChoiceType { get; set; }
-        public int QuestionId { get; set; }
+        public int RankId { get; set; }
+        public string RankType { get; set; }
     }
 }

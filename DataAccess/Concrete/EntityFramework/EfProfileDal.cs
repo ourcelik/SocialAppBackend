@@ -29,8 +29,8 @@ namespace DataAccess.Concrete.EntityFramework
                               Height = p.Height,
                               Mail = u.Mail,
                               Surname = p.Surname,
-                              Profile_photo_url = p.Profile_photo_url,
-                              Relation_status = p.Relation_status,
+                              ProfilePhotoId = p.ProfilePhotoId,
+                              RelationStatus = p.RelationshipStatus,
                               TelNo = u.TelNo,
                               Username = u.Username,
                               Weight = p.Weight
@@ -55,8 +55,8 @@ namespace DataAccess.Concrete.EntityFramework
                               Height = p.Height,
                               Mail = u.Mail,
                               Surname = p.Surname,
-                              Profile_photo_url = p.Profile_photo_url,
-                              Relation_status = p.Relation_status,
+                              ProfilePhotoId = p.ProfilePhotoId,
+                              RelationStatus = p.RelationshipStatus,
                               TelNo = u.TelNo,
                               Username = u.Username,
                               Weight = p.Weight

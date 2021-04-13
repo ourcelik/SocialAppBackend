@@ -2,10 +2,10 @@
 
 namespace Entities.Concrete
 {
-    public class Constant_room : IEntity
+    public class ConstantRoom : IEntity
     {
         public int RoomId { get; set; }
-        public int Chat_LevelId { get; set; }
+        public int ChatLevelId { get; set; }
     }
 
 }

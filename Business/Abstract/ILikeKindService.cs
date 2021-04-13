@@ -7,7 +7,7 @@ namespace Business.Abstract
 {
     public interface ILikeKindService
     {
-        public Task<IDataResult<List<Like_Kind>>> GetLikeKinds();
+        public Task<IDataResult<List<LikeKind>>> GetLikeKinds();
 
     }
 }

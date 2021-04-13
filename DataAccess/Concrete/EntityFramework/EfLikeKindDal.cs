@@ -4,7 +4,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfLikeKindDal : EfEntityRepositoryBase<Like_Kind, SocialNetworkContext>,ILikeKindDal
+    public class EfLikeKindDal : EfEntityRepositoryBase<LikeKind, SocialNetworkContext>,ILikeKindDal
     {
 
     }

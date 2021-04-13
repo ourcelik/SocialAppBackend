@@ -15,10 +15,10 @@ namespace Entities.DTOs
         public string TelNo { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public string Profile_photo_url { get; set; }
+        public int ProfilePhotoId { get; set; }
         public string Weight { get; set; }
         public string Height { get; set; }
-        public byte Relation_status { get; set; }
+        public bool RelationStatus { get; set; }
         public DateTime Birthdate { get; set; }
     }
 }
