@@ -6,12 +6,12 @@ using System.Linq;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfChat_LevelDal : EfEntityRepositoryBase<ChatLevel, SocialNetworkContext>, IChatLevelDal
+    public class EfChatLevelDal : EfEntityRepositoryBase<ChatLevel, SocialNetworkContext>, IChatLevelDal
     {
         public SpecificChatLevel GetChatLevelByMatchId(int id)
         {
             using SocialNetworkContext context = new();
-            var data = from c in context.Chat_Levels
+            var data = from c in context.ChatLevels
                        join m in context.Matches
                        on c.ChatLevelId equals m.ChatLevelId
                        where m.MatchId == id

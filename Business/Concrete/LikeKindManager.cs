@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,6 +19,9 @@ namespace Business.Concrete
         {
             _likeKindDal = likeKindDal;
         }
+
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<List<LikeKind>>> GetLikeKinds()
         {
             var data = await _likeKindDal.GetAllAsync();

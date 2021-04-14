@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    class EfBankDal : EfEntityRepositoryBase<Bank, SocialNetworkContext>, IBankDal
+    public class EfBankDal : EfEntityRepositoryBase<Bank, SocialNetworkContext>, IBankDal
     {
         public UserCoinBank GetCoinsByUserId(int id)
         {

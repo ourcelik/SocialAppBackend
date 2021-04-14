@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,6 +20,8 @@ namespace Business.Concrete
             _roomMemberDal = roomMemberService;
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<List<ConstantRoomMember>>> GetMembersByRank(int rankId)
         {
             List<ConstantRoomMember> data;
@@ -32,6 +36,8 @@ namespace Business.Concrete
             return new ErrorDataResult<List<ConstantRoomMember>>(data);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<List<ConstantRoomMember>>> GetMembersByRoomId(int roomId)
         {
             List<ConstantRoomMember> data;

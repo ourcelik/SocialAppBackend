@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,18 +19,25 @@ namespace Business.Concrete
         {
             _roomDal = roomDal;
         }
+
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<List<ConstantRoom>>> GetAllConstantRoom()
         {
             var data = await _roomDal.GetAllAsync();
             return new SuccessDataResult<List<ConstantRoom>>(data);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<List<ConstantRoom>>> GetByChatLevel(int id)
         {
             var data = await _roomDal.GetAllAsync(r => r.ChatLevelId == id);
             return new SuccessDataResult<List<ConstantRoom>>(data);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<ConstantRoom>> GetByConstantRoomId(int id)
         {
             var data = await _roomDal.GetAsync(r => r.RoomId == id);

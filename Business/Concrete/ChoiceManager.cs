@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,9 +19,12 @@ namespace Business.Concrete
         {
             _choiceDal = choiceDal;
         }
+
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<List<Choice>>> GetAll()
         {
-            List<Choice> data; 
+            List<Choice> data;
             try
             {
                 data = await _choiceDal.GetAllAsync();
@@ -32,6 +37,8 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Choice>>(data);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<Choice>> GetByChoiceId(int id)
         {
             Choice data;
@@ -47,12 +54,14 @@ namespace Business.Concrete
             return new SuccessDataResult<Choice>(data);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<List<Choice>>> GetAllByQuestionId(int id)
         {
             List<Choice> data;
             try
             {
-                data = await _choiceDal.GetAllAsync(c=>c.QuestionId == id);
+                data = await _choiceDal.GetAllAsync(c => c.QuestionId == id);
             }
             catch (Exception)
             {

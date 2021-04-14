@@ -7,6 +7,7 @@ namespace Entities.Concrete
         public int RoomMemberId { get; set; }
         public int RoomId { get; set; }
         public int UserId { get; set; }
+        public int RankId { get; set; }
     }
 
 }

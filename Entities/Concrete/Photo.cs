@@ -6,7 +6,7 @@ namespace Entities.Concrete
     {
         public int PhotoId { get; set; }
         public string Url { get; set; }
-        public int UserId { get; set; }
+        public int ProfileId { get; set; }
     }
 
 }

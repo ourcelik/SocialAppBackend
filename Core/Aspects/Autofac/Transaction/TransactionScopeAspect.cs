@@ -13,8 +13,8 @@ namespace Core.Aspects.Autofac.Transaction
     {
         public override void Intercept(IInvocation invocation)
         {
-            using (TransactionScope transactionScope = new TransactionScope())
-            {
+            TransactionScope transactionScope = new();
+            
                 try
                 {
                     invocation.Proceed();
@@ -25,7 +25,7 @@ namespace Core.Aspects.Autofac.Transaction
                     transactionScope.Dispose();
                     throw;
                 }
-            }
+            transactionScope?.Dispose();   
         }
     }
 }

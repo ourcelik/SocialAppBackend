@@ -6,7 +6,6 @@ namespace Entities.Concrete
     {
         public int RoomId { get; set; }
         public int Chat_LevelId { get; set; }
-        public int AdminId { get; set; }
     }
 
 }

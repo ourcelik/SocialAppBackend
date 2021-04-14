@@ -12,7 +12,7 @@ namespace Core.Aspects.Autofac.Validation
 {
     class ValidationAspect : MethodInterception
     {
-        private Type _validatorType;
+        readonly private Type _validatorType;
         public ValidationAspect(Type validatorType)
         {
             if (!typeof(IValidator).IsAssignableFrom(validatorType))

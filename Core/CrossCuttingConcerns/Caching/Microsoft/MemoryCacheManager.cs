@@ -11,7 +11,7 @@ namespace Core.CrossCuttingConcerns.Caching.Microsoft
 {
     class MemoryCacheManager : ICacheManager
     {
-        IMemoryCache _memoryCache;
+        readonly IMemoryCache _memoryCache;
         public MemoryCacheManager()
         {
             _memoryCache =(IMemoryCache)ServiceTool.ServiceProvider.GetService(typeof(IMemoryCache));
@@ -46,7 +46,7 @@ namespace Core.CrossCuttingConcerns.Caching.Microsoft
         {
             var cacheEntriesCollectionDefinition = typeof(MemoryCache).GetProperty("EntriesCollection", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             var cacheEntriesCollection = cacheEntriesCollectionDefinition.GetValue(_memoryCache) as dynamic;
-            List<ICacheEntry> cacheCollectionValues = new List<ICacheEntry>();
+            List<ICacheEntry> cacheCollectionValues = new();
 
             foreach (var cacheItem in cacheEntriesCollection)
             {

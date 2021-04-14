@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,12 +19,17 @@ namespace Business.Concrete
         {
             _rankDal = rankDal;
         }
+
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<List<Rank>>> GetAll()
         {
             var data = await _rankDal.GetAllAsync();
             return new SuccessDataResult<List<Rank>>(data);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<Rank>> GetByRankId(int id)
         {
             var data = await _rankDal.GetAsync(r=> r.RankId == id);

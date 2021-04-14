@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Utilities.Results;
 using DataAccess;
 using DataAccess.Abstract;
@@ -19,6 +21,7 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
+        [PerformanceAspect(5)]
         async public Task<IResult> AddAsync(User user)
         {
             try
@@ -32,6 +35,8 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<User>> GetByEmailAsync(string email)
         {
             User user;
@@ -46,6 +51,8 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(user);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<User>>  GetByTelNoAsync(string telNo)
         {
             User user;
@@ -59,7 +66,8 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<User>(user);
         }
-
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<User>> GetByUserNameAsync(string userName)
         {
             User user;
@@ -74,6 +82,7 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(user);
         }
 
+        [PerformanceAspect(5)]
         async public Task<IResult> UpdateUserAsync(User user)
         {
             try

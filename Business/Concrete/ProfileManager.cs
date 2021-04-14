@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,6 +20,9 @@ namespace Business.Concrete
         {
             _profileDal = profileDal;
         }
+
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IResult> AddAsync(Profile entity)
         {
             try
@@ -32,7 +37,9 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-         public IDataResult<UserProfile> GetByEmail(string email)
+        [CacheAspect]
+        [PerformanceAspect(5)]
+        public IDataResult<UserProfile> GetByEmail(string email)
         {
             UserProfile user;
             try
@@ -47,6 +54,8 @@ namespace Business.Concrete
             return new SuccessDataResult<UserProfile>(user);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<UserProfile> GetByTelNo(string telNo)
         {
             UserProfile user;
@@ -62,6 +71,8 @@ namespace Business.Concrete
             return new SuccessDataResult<UserProfile>(user);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<UserProfile> GetByUserName(string userName)
         {
             UserProfile user;
@@ -77,6 +88,8 @@ namespace Business.Concrete
             return new SuccessDataResult<UserProfile>(user);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IDataResult<List<Profile>>> GetFullUserProfilesAsync()
         {
             List<Profile> profiles;
@@ -93,6 +106,8 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Profile>>();
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         async public Task<IResult> UpdateUserProfileAsync(Profile entity)
         {
             try

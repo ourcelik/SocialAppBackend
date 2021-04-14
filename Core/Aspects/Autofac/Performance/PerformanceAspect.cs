@@ -12,8 +12,8 @@ namespace Core.Aspects.Autofac.Performance
 {
     public class PerformanceAspect : MethodInterception
     {
-        private int _interval;
-        private Stopwatch _stopwatch;
+        readonly private int _interval;
+        readonly private Stopwatch _stopwatch;
 
         public PerformanceAspect(int interval)
         {
