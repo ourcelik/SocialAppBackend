@@ -4,7 +4,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfLikedDal : EfEntityRepositoryBase<Liked, SocialNetworkContext>,ILikedDal
+    public class EfLikedDal : EfEntityRepositoryBase<Likes, SocialNetworkContext>,ILikedDal
     {
 
     }

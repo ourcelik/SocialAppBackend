@@ -20,8 +20,7 @@ namespace Business.Concrete
             _choiceDal = choiceDal;
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
+
         async public Task<IDataResult<List<Choice>>> GetAll()
         {
             List<Choice> data;

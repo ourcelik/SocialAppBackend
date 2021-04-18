@@ -15,7 +15,7 @@ using Core.Utilities.Interceptors;
 
 namespace Business.DependencyResolvers.Autofac
 {
-    class AutofacBusinessModule:Module
+   public  class AutofacBusinessModule:Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -31,6 +31,10 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfChoiceDal>().As<IChoiceDal>().SingleInstance();
             builder.RegisterType<ConstantRoomManager>().As<IConstantRoomService>().SingleInstance();
             builder.RegisterType<EfConstantRoomDal>().As<IConstantRoomDal>().SingleInstance();
+            builder.RegisterType<QuestionManager>().As<IQuestionService>().SingleInstance();
+            builder.RegisterType<EfQuestionDal>().As<IQuestionDal>().SingleInstance();
+            builder.RegisterType<PreferManager>().As<IPreferService>().SingleInstance();
+            builder.RegisterType<EfPreferDal>().As<IPreferDal>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

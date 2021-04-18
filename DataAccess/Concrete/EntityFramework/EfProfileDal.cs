@@ -18,7 +18,7 @@ namespace DataAccess.Concrete.EntityFramework
             using SocialNetworkContext context = new();
             var profile = from u in context.Users
                           join p in context.Profiles
-                          on u.UserId equals p.ProfileId
+                          on u.ProfileId equals p.ProfileId
                           where u.Mail == mail
                           select new UserProfile
                           {
@@ -44,7 +44,7 @@ namespace DataAccess.Concrete.EntityFramework
             using SocialNetworkContext context = new();
             var profile = from u in context.Users
                           join p in context.Profiles
-                          on u.UserId equals p.ProfileId
+                          on u.ProfileId equals p.ProfileId
                           where u.TelNo == telNo
                           select new UserProfile
                           {

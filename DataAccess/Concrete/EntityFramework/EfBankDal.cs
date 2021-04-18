@@ -23,9 +23,9 @@ namespace DataAccess.Concrete.EntityFramework
                        {
                            Id = u.UserId,
                            Username = u.Username,
-                           CooperCoin = b.Copper_coin,
-                           GoldCoin = b.Gold_coin,
-                           SilverCoin = b.Silver_coin,
+                           CooperCoin = b.CopperCoin,
+                           GoldCoin = b.GoldCoin,
+                           SilverCoin = b.SilverCoin,
                        };
             return data.SingleOrDefault();
         }
@@ -41,7 +41,7 @@ namespace DataAccess.Concrete.EntityFramework
                        {
                            Id = u.UserId,
                            Username = u.Username,
-                           Coin = b.Copper_coin,
+                           Coin = b.CopperCoin,
                        };
             return data.SingleOrDefault();
         }
@@ -54,9 +54,9 @@ namespace DataAccess.Concrete.EntityFramework
                        on u.CoinBankId equals b.BankId
                        select new UserSpecificCoin
                        {
-                           Id = u.UserId,
+                           Id = u.ProfileId,
                            Username = u.Username,
-                           Coin = b.Copper_coin,
+                           Coin = b.CopperCoin,
                        };
             return data.ToList();
         }
@@ -72,7 +72,7 @@ namespace DataAccess.Concrete.EntityFramework
                        {
                            Id = u.UserId,
                            Username = u.Username,
-                           Coin = b.Gold_coin,
+                           Coin = b.GoldCoin,
                        };
             return data.SingleOrDefault();
         }
@@ -87,7 +87,7 @@ namespace DataAccess.Concrete.EntityFramework
                        {
                            Id = u.UserId,
                            Username = u.Username,
-                           Coin = b.Gold_coin,
+                           Coin = b.GoldCoin,
                        };
             return data.ToList();
         }
@@ -103,7 +103,7 @@ namespace DataAccess.Concrete.EntityFramework
                        {
                            Id = u.UserId,
                            Username = u.Username,
-                           Coin = b.Silver_coin,
+                           Coin = b.SilverCoin,
                        };
             return data.SingleOrDefault();
         }
@@ -118,7 +118,7 @@ namespace DataAccess.Concrete.EntityFramework
                        {
                            Id = u.UserId,
                            Username = u.Username,
-                           Coin = b.Silver_coin,
+                           Coin = b.SilverCoin,
                        };
             return data.ToList();
         }

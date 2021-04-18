@@ -56,7 +56,7 @@ namespace Business.Concrete
         [PerformanceAspect(5)]
         async public Task<IDataResult<ProfileQuestion>> GetById(int id)
         {
-            var data = await _profileQuestionDal.GetAsync(pq => pq.ProfileQuestionId == id);
+            var data = await _profileQuestionDal.GetAsync(pq => pq.ProfileId == id);
             return new SuccessDataResult<ProfileQuestion>(data);
         }
     }

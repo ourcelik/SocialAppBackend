@@ -9,7 +9,7 @@ namespace Entities.Concrete
 {
     public class Rank:IEntity
     {
-        public int RankId { get; set; }
+        public byte RankId { get; set; }
         public string RankType { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace Business.Abstract
 {
     public interface IPreferService
     {
-        public Task<IDataResult<List<Prefer>>> GetPreferSettingById(int id);
+        public Task<IDataResult<Prefer>> GetPreferSettingById(int id);
     }
 }

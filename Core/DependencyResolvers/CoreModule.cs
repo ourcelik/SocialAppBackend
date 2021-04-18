@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Core.DependencyResolvers
 {
-    class CoreModule : ICoreModule
+    public class CoreModule : ICoreModule
     {
         public void Load(IServiceCollection serviceCollection)
         {

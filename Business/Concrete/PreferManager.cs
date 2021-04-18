@@ -18,11 +18,10 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        [PerformanceAspect(5)]
-        async public Task<IDataResult<List<Prefer>>> GetPreferSettingById(int id)
+        async public Task<IDataResult<Prefer>> GetPreferSettingById(int id)
         {
-            var data = await _preferDal.GetAllAsync(p => p.PreferId == id);
-            return new SuccessDataResult<List<Prefer>>(data);
+            var data = await _preferDal.GetAsync(p => p.PreferId == id);
+            return new SuccessDataResult<Prefer>(data);
         }
     }
 }

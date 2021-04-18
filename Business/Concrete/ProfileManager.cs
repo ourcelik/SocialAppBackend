@@ -88,8 +88,6 @@ namespace Business.Concrete
             return new SuccessDataResult<UserProfile>(user);
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
         async public Task<IDataResult<List<Profile>>> GetFullUserProfilesAsync()
         {
             List<Profile> profiles;

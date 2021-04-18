@@ -32,7 +32,7 @@ namespace Business.Concrete
         [PerformanceAspect(5)]
         async public Task<IDataResult<Match>> GetMatchById(int id)
         {
-            var data = await _matchDal.GetAsync(m=> m.MatchId == id);
+            var data = await _matchDal.GetAsync(m=> m.ChatLevelId == id);
             return new SuccessDataResult<Match>(data);
         }
 

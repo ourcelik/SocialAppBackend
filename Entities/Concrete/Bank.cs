@@ -6,9 +6,9 @@ namespace Entities.Concrete
     {
         
         public int BankId { get; set; }
-        public int Gold_coin { get; set; }
-        public int Silver_coin { get; set; }
-        public int Copper_coin {get; set;}
+        public int GoldCoin { get; set; }
+        public int SilverCoin { get; set; }
+        public int CopperCoin {get; set;}
 
 
     }
