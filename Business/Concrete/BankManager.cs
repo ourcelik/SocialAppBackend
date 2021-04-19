@@ -19,8 +19,6 @@ namespace Business.Concrete
             _bankDal = bankDal;
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
         async public Task<IDataResult<List<Bank>>> GetAllAsync()
         {
             List<Bank> data;
@@ -35,8 +33,6 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<Bank>>(data);
         }
-        [CacheAspect]
-        [PerformanceAspect(5)]
         public IDataResult<UserCoinBank> GetCoinsByUserId(int id)
         {
             UserCoinBank data;
@@ -52,9 +48,7 @@ namespace Business.Concrete
             return new SuccessDataResult<UserCoinBank>(data);
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
-        public IDataResult<UserSpecificCoin> GetCooperCoinByUserIdAsync(int id)
+        public IDataResult<UserSpecificCoin> GetCooperCoinByUserId(int id)
         {
             UserSpecificCoin data;
             try
@@ -69,9 +63,7 @@ namespace Business.Concrete
             return new SuccessDataResult<UserSpecificCoin>(data);
         }
         
-        [CacheAspect]
-        [PerformanceAspect(5)]
-        public IDataResult<List<UserSpecificCoin>> GetCopperCoinWalletsAsync()
+        public IDataResult<List<UserSpecificCoin>> GetCopperCoinWallets()
         {
             List<UserSpecificCoin> data;
             try
@@ -85,10 +77,8 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<UserSpecificCoin>>(data);
         }
-        
-        [CacheAspect]
-        [PerformanceAspect(5)]
-        public IDataResult<UserSpecificCoin> GetGoldCoinByUserIdAsync(int id)
+
+        public IDataResult<UserSpecificCoin> GetGoldCoinByUserId(int id)
         {
             UserSpecificCoin data;
             try
@@ -103,9 +93,7 @@ namespace Business.Concrete
             return new SuccessDataResult<UserSpecificCoin>(data);
         }
         
-        [CacheAspect]
-        [PerformanceAspect(5)]
-        public IDataResult<List<UserSpecificCoin>> GetGoldCoinWalletsAsync()
+        public IDataResult<List<UserSpecificCoin>> GetGoldCoinWallets()
         {
             List<UserSpecificCoin> data;
             try
@@ -120,9 +108,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<UserSpecificCoin>>(data);
         }
         
-        [CacheAspect]
-        [PerformanceAspect(5)]
-        public IDataResult<UserSpecificCoin> GetSilverCoinByUserIdAsync(int id)
+        public IDataResult<UserSpecificCoin> GetSilverCoinByUserId(int id)
         {
             UserSpecificCoin data;
             try
@@ -137,9 +123,7 @@ namespace Business.Concrete
             return new SuccessDataResult<UserSpecificCoin>(data);
         }
         
-        [CacheAspect]
-        [PerformanceAspect(5)]
-        public IDataResult<List<UserSpecificCoin>> GetSilverCoinWalletsAsync()
+        public IDataResult<List<UserSpecificCoin>> GetSilverCoinWallets()
         {
             List<UserSpecificCoin> data;
             try

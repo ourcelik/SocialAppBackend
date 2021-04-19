@@ -15,8 +15,8 @@ namespace DataAccess.Concrete.EntityFramework
             optionsBuilder.UseSqlServer(@"Server=DESKTOP-D3TIOUO;Database=Socialnetworkdb;Trusted_Connection=True");
 
         }
+        public DbSet<Bank> Banks { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Bank> Banks{ get; set; }
         public DbSet<ConstantRoom> ConstantRooms { get; set; }
         public DbSet<ConstantRoomMember> ConstantRoomMembers { get; set; }
         public DbSet<LikeKind> LikeKinds { get; set; }
@@ -30,7 +30,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Question> Questions { get; set; }
         public DbSet<RoomMember> RoomMembers { get; set; }
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<Rank> ProfileAnswers { get; set; }
+        public DbSet<Rank> Ranks { get; set; }
         public DbSet<ProfileQuestion> ProfileQuestions { get; set; }
         public DbSet<Choice> Choices { get; set; }
         public DbSet<Gender> Genders { get; set; }

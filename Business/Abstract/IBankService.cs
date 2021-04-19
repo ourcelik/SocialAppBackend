@@ -13,11 +13,11 @@ namespace Business.Abstract
     {
         public Task<IDataResult<List<Bank>>> GetAllAsync();
         public IDataResult<UserCoinBank> GetCoinsByUserId(int id);
-        public IDataResult<UserSpecificCoin> GetCooperCoinByUserIdAsync(int id);
-        public IDataResult<List<UserSpecificCoin>> GetCopperCoinWalletsAsync();
-        public IDataResult<UserSpecificCoin> GetGoldCoinByUserIdAsync(int id);
-        public IDataResult<List<UserSpecificCoin>> GetGoldCoinWalletsAsync();
-        public IDataResult<UserSpecificCoin> GetSilverCoinByUserIdAsync(int id);
-        public IDataResult<List<UserSpecificCoin>> GetSilverCoinWalletsAsync();
+        public IDataResult<UserSpecificCoin> GetCooperCoinByUserId(int id);
+        public IDataResult<List<UserSpecificCoin>> GetCopperCoinWallets();
+        public IDataResult<UserSpecificCoin> GetGoldCoinByUserId(int id);
+        public IDataResult<List<UserSpecificCoin>> GetGoldCoinWallets();
+        public IDataResult<UserSpecificCoin> GetSilverCoinByUserId(int id);
+        public IDataResult<List<UserSpecificCoin>> GetSilverCoinWallets();
     }
 }

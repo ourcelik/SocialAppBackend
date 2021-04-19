@@ -40,7 +40,7 @@ namespace Business.Concrete
         [PerformanceAspect(5)]
         async public Task<IDataResult<ConstantRoom>> GetByConstantRoomId(int id)
         {
-            var data = await _roomDal.GetAsync(r => r.ChatLevelId == id);
+            var data = await _roomDal.GetAsync(r => r.RoomId == id);
             return new SuccessDataResult<ConstantRoom>(data);
         }
     }

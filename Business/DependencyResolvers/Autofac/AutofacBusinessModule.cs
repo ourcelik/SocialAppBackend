@@ -35,6 +35,12 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfQuestionDal>().As<IQuestionDal>().SingleInstance();
             builder.RegisterType<PreferManager>().As<IPreferService>().SingleInstance();
             builder.RegisterType<EfPreferDal>().As<IPreferDal>().SingleInstance();
+            builder.RegisterType<NotificationManager>().As<INotificationService>().SingleInstance();
+            builder.RegisterType<EfNotificationDal>().As<INotificationDal>().SingleInstance(); 
+            builder.RegisterType<RankManager>().As<IRankService>().SingleInstance();
+            builder.RegisterType<EfRankDal>().As<IRankDal>().SingleInstance();
+            builder.RegisterType<RoomManager>().As<IRoomService>().SingleInstance();
+            builder.RegisterType<EfRoomDal>().As<IRoomDal>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

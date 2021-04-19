@@ -14,7 +14,7 @@ namespace DataAccess.Concrete.EntityFramework
             var data = from c in context.ChatLevels
                        join m in context.Matches
                        on c.ChatLevelId equals m.ChatLevelId
-                       where m.ChatLevelId == id
+                       where m.MatchId == id
                        select new SpecificChatLevel
                        {
                            Level = c.Level,

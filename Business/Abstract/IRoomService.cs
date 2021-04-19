@@ -1,14 +1,15 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
     public interface IRoomService
     {
-        public IDataResult<List<Room>> GetAll();
-        public IDataResult<List<Room>> GetRoomsByLevelId(int id);
-        public IDataResult<List<Room>> GetRoomsByAdminId(int id);
+         public Task<IDataResult<List<Room>>> GetAllAsync();
+         public Task<IDataResult<List<Room>>> GetRoomsByLevelIdAsync(int levelId);
+         public Task<IDataResult<Room>> GetRoomByIdAsync(int id);
 
 
 

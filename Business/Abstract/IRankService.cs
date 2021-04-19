@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    interface IRankService
+    public interface IRankService
     {
         public Task<IDataResult<Rank>> GetByRankId(int id);
         public Task<IDataResult<List<Rank>>> GetAll();
