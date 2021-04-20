@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Logging;
 using Core.Aspects.Autofac.Performance;
+using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -19,6 +21,8 @@ namespace Business.Concrete
             _bankDal = bankDal;
         }
 
+        [LogAspect(typeof(FileLogger))]
+        [LogAspect(typeof(DatabaseLogger))]
         async public Task<IDataResult<List<Bank>>> GetAllAsync()
         {
             List<Bank> data;
