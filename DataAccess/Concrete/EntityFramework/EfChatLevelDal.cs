@@ -8,14 +8,14 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfChatLevelDal : EfEntityRepositoryBase<ChatLevel, SocialNetworkContext>, IChatLevelDal
     {
-        public SpecificChatLevel GetChatLevelByMatchId(int id)
+        public SpecificChatLevelDto GetChatLevelByMatchId(int id)
         {
             using SocialNetworkContext context = new();
             var data = from c in context.ChatLevels
                        join m in context.Matches
                        on c.ChatLevelId equals m.ChatLevelId
                        where m.MatchId == id
-                       select new SpecificChatLevel
+                       select new SpecificChatLevelDto
                        {
                            Level = c.Level,
                            MatchedUser = m.MatchUserId,

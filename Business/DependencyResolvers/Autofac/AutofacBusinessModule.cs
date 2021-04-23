@@ -40,7 +40,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<RankManager>().As<IRankService>().SingleInstance();
             builder.RegisterType<EfRankDal>().As<IRankDal>().SingleInstance();
             builder.RegisterType<RoomManager>().As<IRoomService>().SingleInstance();
-            builder.RegisterType<EfRoomDal>().As<IRoomDal>().SingleInstance();
+            builder.RegisterType<EfRoomDal>().As<IRoomDal>().SingleInstance(); 
+            builder.RegisterType<PhotoManager>().As<IPhotoService>().SingleInstance();
+            builder.RegisterType<EfPhotoDal>().As<IPhotoDal>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

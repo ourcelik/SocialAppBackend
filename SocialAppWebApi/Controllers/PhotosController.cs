@@ -10,39 +10,39 @@ namespace SocialAppWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ConstantRoomsController : ControllerBase
+    public class PhotosController : ControllerBase
     {
-        IConstantRoomService _constantRoomService;
+        IPhotoService _photoService;
 
-        public ConstantRoomsController(IConstantRoomService constantRoomService)
+        public PhotosController(IPhotoService photoService)
         {
-            _constantRoomService = constantRoomService;
+            _photoService = photoService;
         }
 
+        [HttpGet("getbyphotoid/{id}")]
+        public async Task<IActionResult> GetByPhotoId(int id)
+        {
+            var data = await _photoService.GetPhotoByPhotoId(id);
+            if (data.Success)
+            {
+                return Ok(data);
+            }
+            return BadRequest(data);
+        }
+        [HttpGet("getphotosbyprofileid/{id}")]
+        public async Task<IActionResult> GetPhotosByProfileId(int id)
+        {
+            var data = await _photoService.GetPhotosByProfileId(id);
+            if (data.Success)
+            {
+                return Ok(data);
+            }
+            return BadRequest(data);
+        }
         [HttpGet("getall")]
-        async public Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetPhotosByProfileId()
         {
-            var data = await _constantRoomService.GetAllConstantRoom();
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
-        }
-        [HttpGet("getallbylevelid/{id}")]
-        async public Task<IActionResult> GetByChatLevel(int id)
-        {
-            var data = await _constantRoomService.GetByChatLevel(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
-        }
-        [HttpGet("getbyconstantroomid/{id}")]
-        async public Task<IActionResult> GetByConstantRoomId(int id)
-        {
-            var data = await _constantRoomService.GetByConstantRoomId(id);
+            var data = await _photoService.GetAllPhotos();
             if (data.Success)
             {
                 return Ok(data);

@@ -28,7 +28,7 @@ namespace SocialAppWebApi.Controllers
             }
             return BadRequest(data);
         }
-        [HttpGet("getallbyquestionid")]
+        [HttpGet("getallbyquestionid/{id}")]
         async public Task<IActionResult> GetAllByQuestionId(int id)
         {
             var data = await _choiceService.GetAllByQuestionId(id);
@@ -38,7 +38,7 @@ namespace SocialAppWebApi.Controllers
             }
             return BadRequest(data);
         }
-        [HttpGet("getallbychoiceid")]
+        [HttpGet("getallbychoiceid/{id}")]
         async public Task<IActionResult> GetByChoiceId(int id)
         {
             var data = await _choiceService.GetByChoiceId(id);

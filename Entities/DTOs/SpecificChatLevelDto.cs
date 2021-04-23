@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.DTOs
 {
-    public class SpecificChatLevel :IDto
+    public class SpecificChatLevelDto :IDto
     {
         public string Level { get; set; }
         public int MatchUser { get; set; }

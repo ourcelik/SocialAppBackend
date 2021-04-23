@@ -18,7 +18,7 @@ namespace SocialAppWebApi.Controllers
             _notificationService = notificationService;
         }
 
-        [HttpGet("getbyid")]
+        [HttpGet("getbyid/{id}")]
         async public Task<IActionResult> GetById(int id)
         {
             var data = await _notificationService.GetNotificationSettingById(id);

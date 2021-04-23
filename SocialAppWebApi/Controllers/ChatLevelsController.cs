@@ -19,7 +19,7 @@ namespace SocialAppWebApi.Controllers
             _chatLevelService = chatLevelService;
         }
 
-        [HttpGet("getall")]
+        [HttpGet("getall/{id}")]
         async public Task<IActionResult> GetAll()
         {
             var data = await _chatLevelService.GetAll();
@@ -29,7 +29,7 @@ namespace SocialAppWebApi.Controllers
             }
             return BadRequest(data);
         }
-        [HttpGet("getbylevel")]
+        [HttpGet("getbylevel/{id}")]
         async public Task<IActionResult> GetByChatLevel(string level)
         {
             var data = await _chatLevelService.GetByChatLevel(level);
@@ -39,7 +39,7 @@ namespace SocialAppWebApi.Controllers
             }
             return BadRequest(data);
         }
-        [HttpGet("getbyid")]
+        [HttpGet("getbyid/{id}")]
         async public Task<IActionResult> GetByChatLevelId(int id)
         {
             var data = await _chatLevelService.GetByChatLevelId(id);
@@ -49,7 +49,7 @@ namespace SocialAppWebApi.Controllers
             }
             return BadRequest(data);
         }
-        [HttpGet("getbymatchid")]
+        [HttpGet("getbymatchid/{id}")]
         public IActionResult GetChatLevelByMatchId(int id)
         {
             var data =  _chatLevelService.GetChatLevelByMatch(id);

@@ -21,8 +21,6 @@ namespace Business.Concrete
             _profileDal = profileDal;
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
         async public Task<IResult> AddAsync(Profile entity)
         {
             try
@@ -38,10 +36,9 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        [PerformanceAspect(5)]
-        public IDataResult<UserProfile> GetByEmail(string email)
+        public IDataResult<UserProfileDto> GetByEmail(string email)
         {
-            UserProfile user;
+            UserProfileDto user;
             try
             {
                 user = _profileDal.GetUserProfileByMail(email);
@@ -49,16 +46,15 @@ namespace Business.Concrete
             }
             catch (Exception)
             {
-                return new ErrorDataResult<UserProfile>();
+                return new ErrorDataResult<UserProfileDto>();
             }
-            return new SuccessDataResult<UserProfile>(user);
+            return new SuccessDataResult<UserProfileDto>(user);
         }
 
         [CacheAspect]
-        [PerformanceAspect(5)]
-        public IDataResult<UserProfile> GetByTelNo(string telNo)
+        public IDataResult<UserProfileDto> GetByTelNo(string telNo)
         {
-            UserProfile user;
+            UserProfileDto user;
             try
             {
                 user = _profileDal.GetUserProfileByTelNo(telNo);
@@ -66,29 +62,28 @@ namespace Business.Concrete
             }
             catch (Exception)
             {
-                return new ErrorDataResult<UserProfile>();
+                return new ErrorDataResult<UserProfileDto>();
             }
-            return new SuccessDataResult<UserProfile>(user);
+            return new SuccessDataResult<UserProfileDto>(user);
         }
 
         [CacheAspect]
-        [PerformanceAspect(5)]
-        public IDataResult<UserProfile> GetByUserName(string userName)
+        public IDataResult<UserProfileDto> GetByUsername(string userName)
         {
-            UserProfile user;
+            UserProfileDto user;
             try
             {
-                user = _profileDal.GetUserProfileByUserName(userName);
+                user = _profileDal.GetUserProfileByUsername(userName);
 
             }
             catch (Exception)
             {
-                return new ErrorDataResult<UserProfile>();
+                return new ErrorDataResult<UserProfileDto>();
             }
-            return new SuccessDataResult<UserProfile>(user);
+            return new SuccessDataResult<UserProfileDto>(user);
         }
 
-        async public Task<IDataResult<List<Profile>>> GetFullUserProfilesAsync()
+        async public Task<IDataResult<List<Profile>>> GetAllAsync()
         {
             List<Profile> profiles;
             try
@@ -101,11 +96,10 @@ namespace Business.Concrete
 
                 return new ErrorDataResult<List<Profile>>();
             }
-            return new SuccessDataResult<List<Profile>>();
+            return new SuccessDataResult<List<Profile>>(profiles);
         }
 
         [CacheAspect]
-        [PerformanceAspect(5)]
         async public Task<IResult> UpdateUserProfileAsync(Profile entity)
         {
             try

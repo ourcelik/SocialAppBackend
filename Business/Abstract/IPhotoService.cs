@@ -7,7 +7,8 @@ namespace Business.Abstract
 {
     public interface IPhotoService
     {
-        public Task<IDataResult<List<Photo>>> GetPhotosByUserId(int userId);
+        public Task<IDataResult<List<Photo>>> GetPhotosByProfileId(int profileId);
         public Task<IDataResult<Photo>> GetPhotoByPhotoId(int id);
+        public Task<IDataResult<List<Photo>>> GetAllPhotos();
     }
 }

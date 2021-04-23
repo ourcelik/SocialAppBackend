@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.DTOs
 {
-    public class UserSpecificCoin :IDto
+    public class UserSpecificCoinDto :IDto
     {
         public int Id { get; set; }
         public string Username { get; set; }

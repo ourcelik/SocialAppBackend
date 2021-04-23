@@ -12,8 +12,8 @@ namespace DataAccess.Abstract
 {
     public interface IProfileDal:IEntityRepository<Profile>
     {
-        UserProfile GetUserProfileByMail(string mail);
-        UserProfile GetUserProfileByTelNo(string telNo);
-        UserProfile GetUserProfileByUserName(string userName);
+        UserProfileDto GetUserProfileByMail(string mail);
+        UserProfileDto GetUserProfileByTelNo(string telNo);
+        UserProfileDto GetUserProfileByUsername(string userName);
     }
 }

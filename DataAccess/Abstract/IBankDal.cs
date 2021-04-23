@@ -11,13 +11,13 @@ namespace DataAccess.Abstract
 {
     public interface IBankDal:IEntityRepository<Bank>
     {
-        public List<UserSpecificCoin> GetCopperCoinWallets();
-        public List<UserSpecificCoin> GetGoldCoinWallets();
-        public List<UserSpecificCoin> GetSilverCoinWallets();
-        public UserCoinBank GetCoinsByUserId(int id);
-        public UserSpecificCoin GetCooperCoinByUserId(int id);
-        public UserSpecificCoin GetSilverCoinByUserId(int id);
-        public UserSpecificCoin GetGoldCoinByUserId(int id);
+        public List<UserSpecificCoinDto> GetCopperCoinWallets();
+        public List<UserSpecificCoinDto> GetGoldCoinWallets();
+        public List<UserSpecificCoinDto> GetSilverCoinWallets();
+        public UserCoinBankDto GetCoinsByUserId(int id);
+        public UserSpecificCoinDto GetCooperCoinByUserId(int id);
+        public UserSpecificCoinDto GetSilverCoinByUserId(int id);
+        public UserSpecificCoinDto GetGoldCoinByUserId(int id);
 
 
 

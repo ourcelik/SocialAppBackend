@@ -7,7 +7,7 @@ namespace DataAccess.Abstract
 {
     public interface IChatLevelDal:IEntityRepository<ChatLevel>
     {
-        public SpecificChatLevel GetChatLevelByMatchId(int id);
+        public SpecificChatLevelDto GetChatLevelByMatchId(int id);
     }
     
 }

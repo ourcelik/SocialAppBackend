@@ -13,14 +13,14 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfProfileDal : EfEntityRepositoryBase<Profile, SocialNetworkContext>, IProfileDal
     {
-        public UserProfile GetUserProfileByMail(string mail)
+        public UserProfileDto GetUserProfileByMail(string mail)
         {
             using SocialNetworkContext context = new();
             var profile = from u in context.Users
                           join p in context.Profiles
                           on u.ProfileId equals p.ProfileId
                           where u.Mail == mail
-                          select new UserProfile
+                          select new UserProfileDto
                           {
                               UserId = u.UserId,
                               ProfileId = p.ProfileId,
@@ -39,14 +39,14 @@ namespace DataAccess.Concrete.EntityFramework
             return profile.SingleOrDefault();
         }
 
-        public UserProfile GetUserProfileByTelNo(string telNo)
+        public UserProfileDto GetUserProfileByTelNo(string telNo)
         {
             using SocialNetworkContext context = new();
             var profile = from u in context.Users
                           join p in context.Profiles
                           on u.ProfileId equals p.ProfileId
                           where u.TelNo == telNo
-                          select new UserProfile
+                          select new UserProfileDto
                           {
                               UserId = u.UserId,
                               ProfileId = p.ProfileId,
@@ -65,7 +65,7 @@ namespace DataAccess.Concrete.EntityFramework
             return profile.SingleOrDefault();
         }
 
-        public UserProfile GetUserProfileByUserName(string userName)
+        public UserProfileDto GetUserProfileByUsername(string userName)
         {
             throw new NotImplementedException();
         }

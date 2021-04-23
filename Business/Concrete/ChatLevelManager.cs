@@ -74,9 +74,9 @@ namespace Business.Concrete
 
         [CacheAspect]
         [PerformanceAspect(5)]
-        public IDataResult<SpecificChatLevel> GetChatLevelByMatch(int id)
+        public IDataResult<SpecificChatLevelDto> GetChatLevelByMatch(int id)
         {
-            SpecificChatLevel data;
+            SpecificChatLevelDto data;
             try
             {
                 data = _chatLevelDal.GetChatLevelByMatchId(id);
@@ -84,9 +84,9 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<SpecificChatLevel>();
+                return new ErrorDataResult<SpecificChatLevelDto>();
             }
-            return new SuccessDataResult<SpecificChatLevel>(data);
+            return new SuccessDataResult<SpecificChatLevelDto>(data);
         }
     }
 }

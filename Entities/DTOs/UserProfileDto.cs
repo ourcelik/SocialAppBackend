@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.DTOs
 {
-    public class UserProfile:IDto
+    public class UserProfileDto:IDto
     {
         public int ProfileId { get; set; }
         public int UserId { get; set; }

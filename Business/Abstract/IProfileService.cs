@@ -12,11 +12,11 @@ namespace Business.Abstract
     public interface IProfileService
     {
 
-        public IDataResult<UserProfile> GetByEmail(string email);
-        public IDataResult<UserProfile> GetByTelNo(string telNo);
-        public IDataResult<UserProfile> GetByUserName(string userName);
+        public IDataResult<UserProfileDto> GetByEmail(string email);
+        public IDataResult<UserProfileDto> GetByTelNo(string telNo);
+        public IDataResult<UserProfileDto> GetByUsername(string userName);
         public Task<IResult> AddAsync(Profile entity);
-        public Task<IDataResult<List<Profile>>> GetFullUserProfilesAsync();
+        public Task<IDataResult<List<Profile>>> GetAllAsync();
         public Task<IResult> UpdateUserProfileAsync(Profile entity);
 
     }

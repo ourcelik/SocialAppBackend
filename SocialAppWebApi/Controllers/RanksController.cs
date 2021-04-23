@@ -30,7 +30,7 @@ namespace SocialAppWebApi.Controllers
             return BadRequest(data);
         }
 
-        [HttpGet("getbyrankid")]
+        [HttpGet("getbyrankid/{id}")]
         async public Task<IActionResult> GetByRankId(int id)
         {
             var data = await _rankService.GetByRankId(id);

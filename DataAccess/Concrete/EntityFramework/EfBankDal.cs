@@ -12,14 +12,14 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfBankDal : EfEntityRepositoryBase<Bank, SocialNetworkContext>, IBankDal
     {
-        public UserCoinBank GetCoinsByUserId(int id)
+        public UserCoinBankDto GetCoinsByUserId(int id)
         {
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
                        on u.CoinBankId equals b.BankId
                        where u.UserId == id
-                       select new UserCoinBank
+                       select new UserCoinBankDto
                        {
                            Id = u.UserId,
                            Username = u.Username,
@@ -30,14 +30,14 @@ namespace DataAccess.Concrete.EntityFramework
             return data.SingleOrDefault();
         }
 
-        public UserSpecificCoin GetCooperCoinByUserId(int id)
+        public UserSpecificCoinDto GetCooperCoinByUserId(int id)
         {
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
                        on u.CoinBankId equals b.BankId
                        where u.UserId == id
-                       select new UserSpecificCoin
+                       select new UserSpecificCoinDto
                        {
                            Id = u.UserId,
                            Username = u.Username,
@@ -46,13 +46,13 @@ namespace DataAccess.Concrete.EntityFramework
             return data.SingleOrDefault();
         }
 
-        public List<UserSpecificCoin> GetCopperCoinWallets()
+        public List<UserSpecificCoinDto> GetCopperCoinWallets()
         {
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
                        on u.CoinBankId equals b.BankId
-                       select new UserSpecificCoin
+                       select new UserSpecificCoinDto
                        {
                            Id = u.ProfileId,
                            Username = u.Username,
@@ -61,14 +61,14 @@ namespace DataAccess.Concrete.EntityFramework
             return data.ToList();
         }
 
-        public UserSpecificCoin GetGoldCoinByUserId(int id)
+        public UserSpecificCoinDto GetGoldCoinByUserId(int id)
         {
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
                        on u.CoinBankId equals b.BankId
                        where u.UserId == id
-                       select new UserSpecificCoin
+                       select new UserSpecificCoinDto
                        {
                            Id = u.UserId,
                            Username = u.Username,
@@ -77,13 +77,13 @@ namespace DataAccess.Concrete.EntityFramework
             return data.SingleOrDefault();
         }
 
-        public List<UserSpecificCoin> GetGoldCoinWallets()
+        public List<UserSpecificCoinDto> GetGoldCoinWallets()
         {
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
                        on u.CoinBankId equals b.BankId
-                       select new UserSpecificCoin
+                       select new UserSpecificCoinDto
                        {
                            Id = u.UserId,
                            Username = u.Username,
@@ -92,14 +92,14 @@ namespace DataAccess.Concrete.EntityFramework
             return data.ToList();
         }
 
-        public UserSpecificCoin GetSilverCoinByUserId(int id)
+        public UserSpecificCoinDto GetSilverCoinByUserId(int id)
         {
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
                        on u.CoinBankId equals b.BankId
                        where u.UserId == id
-                       select new UserSpecificCoin
+                       select new UserSpecificCoinDto
                        {
                            Id = u.UserId,
                            Username = u.Username,
@@ -108,13 +108,13 @@ namespace DataAccess.Concrete.EntityFramework
             return data.SingleOrDefault();
         }
 
-        public List<UserSpecificCoin> GetSilverCoinWallets()
+        public List<UserSpecificCoinDto> GetSilverCoinWallets()
         {
             using SocialNetworkContext context = new();
             var data = from u in context.Users
                        join b in context.Banks
                        on u.CoinBankId equals b.BankId
-                       select new UserSpecificCoin
+                       select new UserSpecificCoinDto
                        {
                            Id = u.UserId,
                            Username = u.Username,

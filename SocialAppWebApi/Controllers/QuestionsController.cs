@@ -28,7 +28,7 @@ namespace SocialAppWebApi.Controllers
             }
             return BadRequest(result);
         }
-        [HttpGet("getbyquestionid")]
+        [HttpGet("getbyquestionid/{id}")]
         async public Task<IActionResult> GetByQuestionId(int id)
         {
             var result = await _questionService.GetQuestionByQuestionId(id);

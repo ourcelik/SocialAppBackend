@@ -29,7 +29,7 @@ namespace SocialAppWebApi.Controllers
             }
             return BadRequest(data);
         }
-        [HttpGet("getcoinsbyuserid")]
+        [HttpGet("getcoinsbyuserid/{id}")]
         public IActionResult GetCoinsByUserId(int id)
         {
             var data =  _bankService.GetCoinsByUserId(id);
@@ -39,7 +39,7 @@ namespace SocialAppWebApi.Controllers
             }
             return BadRequest(data);
         }
-        [HttpGet("getcoopercoinbyuserid")]
+        [HttpGet("getcoopercoinbyuserid/{id}")]
         public IActionResult GetCooperCoinByUserId(int id)
         {
             var data = _bankService.GetCooperCoinByUserId(id);
@@ -49,7 +49,7 @@ namespace SocialAppWebApi.Controllers
             }
             return BadRequest(data);
         }
-        [HttpGet("getgoldcoinbyuserid")]
+        [HttpGet("getgoldcoinbyuserid/{id}")]
         public IActionResult GetGoldCoinByUserId(int id)
         {
             var data = _bankService.GetGoldCoinByUserId(id);
@@ -59,7 +59,7 @@ namespace SocialAppWebApi.Controllers
             }
             return BadRequest(data);
         }
-        [HttpGet("getsilvercoinbyuserid")]
+        [HttpGet("getsilvercoinbyuserid/{id}")]
         public IActionResult GetSilverCoinByUserId(int id)
         {
             var data = _bankService.GetSilverCoinByUserId(id);

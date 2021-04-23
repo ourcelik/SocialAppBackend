@@ -30,7 +30,7 @@ namespace SocialAppWebApi.Controllers
             }
             return BadRequest(data);
         }
-        [HttpGet("getroombyid")]
+        [HttpGet("getroombyid/{id}")]
         async public Task<IActionResult> GetRoomByIdAsync(int id)
         {
             var data = await _roomService.GetRoomByIdAsync(id);
@@ -40,7 +40,7 @@ namespace SocialAppWebApi.Controllers
             }
             return BadRequest(data);
         }
-        [HttpGet("getroomsbylevelid")]
+        [HttpGet("getroomsbylevelid/{id}")]
         async public Task<IActionResult> GetRoomsByLevelIdAsync(int id)
         {
             var data = await _roomService.GetRoomsByLevelIdAsync(id);

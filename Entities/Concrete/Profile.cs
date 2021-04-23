@@ -6,7 +6,6 @@ namespace Entities.Concrete
 {
     public class Profile : IEntity
     {
-        [Key]
         public int ProfileId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

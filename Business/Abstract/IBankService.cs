@@ -12,12 +12,12 @@ namespace Business.Abstract
     public interface IBankService
     {
         public Task<IDataResult<List<Bank>>> GetAllAsync();
-        public IDataResult<UserCoinBank> GetCoinsByUserId(int id);
-        public IDataResult<UserSpecificCoin> GetCooperCoinByUserId(int id);
-        public IDataResult<List<UserSpecificCoin>> GetCopperCoinWallets();
-        public IDataResult<UserSpecificCoin> GetGoldCoinByUserId(int id);
-        public IDataResult<List<UserSpecificCoin>> GetGoldCoinWallets();
-        public IDataResult<UserSpecificCoin> GetSilverCoinByUserId(int id);
-        public IDataResult<List<UserSpecificCoin>> GetSilverCoinWallets();
+        public IDataResult<UserCoinBankDto> GetCoinsByUserId(int id);
+        public IDataResult<UserSpecificCoinDto> GetCooperCoinByUserId(int id);
+        public IDataResult<List<UserSpecificCoinDto>> GetCopperCoinWallets();
+        public IDataResult<UserSpecificCoinDto> GetGoldCoinByUserId(int id);
+        public IDataResult<List<UserSpecificCoinDto>> GetGoldCoinWallets();
+        public IDataResult<UserSpecificCoinDto> GetSilverCoinByUserId(int id);
+        public IDataResult<List<UserSpecificCoinDto>> GetSilverCoinWallets();
     }
 }

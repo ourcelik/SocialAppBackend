@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Exception;
 using Core.Aspects.Autofac.Logging;
 using Core.Aspects.Autofac.Performance;
 using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
@@ -21,14 +22,14 @@ namespace Business.Concrete
             _bankDal = bankDal;
         }
 
-        [LogAspect(typeof(FileLogger))]
-        [LogAspect(typeof(DatabaseLogger))]
         async public Task<IDataResult<List<Bank>>> GetAllAsync()
         {
             List<Bank> data;
             try
             {
                 data = await _bankDal.GetAllAsync();
+
+
             }
             catch (Exception)
             {
@@ -37,9 +38,9 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<Bank>>(data);
         }
-        public IDataResult<UserCoinBank> GetCoinsByUserId(int id)
+        public IDataResult<UserCoinBankDto> GetCoinsByUserId(int id)
         {
-            UserCoinBank data;
+            UserCoinBankDto data;
             try
             {
                 data = _bankDal.GetCoinsByUserId(id);
@@ -47,14 +48,14 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<UserCoinBank>();
+                return new ErrorDataResult<UserCoinBankDto>();
             }
-            return new SuccessDataResult<UserCoinBank>(data);
+            return new SuccessDataResult<UserCoinBankDto>(data);
         }
 
-        public IDataResult<UserSpecificCoin> GetCooperCoinByUserId(int id)
+        public IDataResult<UserSpecificCoinDto> GetCooperCoinByUserId(int id)
         {
-            UserSpecificCoin data;
+            UserSpecificCoinDto data;
             try
             {
                 data = _bankDal.GetCooperCoinByUserId(id);
@@ -62,14 +63,14 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<UserSpecificCoin>();
+                return new ErrorDataResult<UserSpecificCoinDto>();
             }
-            return new SuccessDataResult<UserSpecificCoin>(data);
+            return new SuccessDataResult<UserSpecificCoinDto>(data);
         }
         
-        public IDataResult<List<UserSpecificCoin>> GetCopperCoinWallets()
+        public IDataResult<List<UserSpecificCoinDto>> GetCopperCoinWallets()
         {
-            List<UserSpecificCoin> data;
+            List<UserSpecificCoinDto> data;
             try
             {
                 data = _bankDal.GetCopperCoinWallets();
@@ -77,14 +78,14 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<List<UserSpecificCoin>>();
+                return new ErrorDataResult<List<UserSpecificCoinDto>>();
             }
-            return new SuccessDataResult<List<UserSpecificCoin>>(data);
+            return new SuccessDataResult<List<UserSpecificCoinDto>>(data);
         }
 
-        public IDataResult<UserSpecificCoin> GetGoldCoinByUserId(int id)
+        public IDataResult<UserSpecificCoinDto> GetGoldCoinByUserId(int id)
         {
-            UserSpecificCoin data;
+            UserSpecificCoinDto data;
             try
             {
                 data = _bankDal.GetGoldCoinByUserId(id);
@@ -92,14 +93,14 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<UserSpecificCoin>();
+                return new ErrorDataResult<UserSpecificCoinDto>();
             }
-            return new SuccessDataResult<UserSpecificCoin>(data);
+            return new SuccessDataResult<UserSpecificCoinDto>(data);
         }
         
-        public IDataResult<List<UserSpecificCoin>> GetGoldCoinWallets()
+        public IDataResult<List<UserSpecificCoinDto>> GetGoldCoinWallets()
         {
-            List<UserSpecificCoin> data;
+            List<UserSpecificCoinDto> data;
             try
             {
                 data = _bankDal.GetGoldCoinWallets();
@@ -107,14 +108,14 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<List<UserSpecificCoin>>();
+                return new ErrorDataResult<List<UserSpecificCoinDto>>();
             }
-            return new SuccessDataResult<List<UserSpecificCoin>>(data);
+            return new SuccessDataResult<List<UserSpecificCoinDto>>(data);
         }
         
-        public IDataResult<UserSpecificCoin> GetSilverCoinByUserId(int id)
+        public IDataResult<UserSpecificCoinDto> GetSilverCoinByUserId(int id)
         {
-            UserSpecificCoin data;
+            UserSpecificCoinDto data;
             try
             {
                 data = _bankDal.GetSilverCoinByUserId(id);
@@ -122,14 +123,14 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<UserSpecificCoin>();
+                return new ErrorDataResult<UserSpecificCoinDto>();
             }
-            return new SuccessDataResult<UserSpecificCoin>(data);
+            return new SuccessDataResult<UserSpecificCoinDto>(data);
         }
         
-        public IDataResult<List<UserSpecificCoin>> GetSilverCoinWallets()
+        public IDataResult<List<UserSpecificCoinDto>> GetSilverCoinWallets()
         {
-            List<UserSpecificCoin> data;
+            List<UserSpecificCoinDto> data;
             try
             {
                 data = _bankDal.GetSilverCoinWallets();
@@ -137,9 +138,9 @@ namespace Business.Concrete
             catch (Exception)
             {
 
-                return new ErrorDataResult<List<UserSpecificCoin>>();
+                return new ErrorDataResult<List<UserSpecificCoinDto>>();
             }
-            return new SuccessDataResult<List<UserSpecificCoin>>(data);
+            return new SuccessDataResult<List<UserSpecificCoinDto>>(data);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace SocialAppWebApi.Controllers
             _preferService = preferService;
         }
 
-        [HttpGet("getbyId")]
+        [HttpGet("getbyId/{id}")]
         async public Task<IActionResult> GetById(int id)
         {
             var data = await _preferService.GetPreferSettingById(id);

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Core.Aspects.Autofac.Exception
 {
-    class ExceptionLogAspect : MethodInterception
+    public class ExceptionLogAspect : MethodInterception
     {
         private LoggerServiceBase _loggerService;
 

@@ -21,7 +21,7 @@ namespace SocialAppWebApi.Controllers
         [HttpGet("getAll")]
         async public Task<IActionResult> GetAll()
         {
-            var result = await _profileService.GetFullUserProfilesAsync();
+            var result = await _profileService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
