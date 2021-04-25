@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspect.Autofac;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Exception;
 using Core.Aspects.Autofac.Logging;
@@ -22,6 +23,7 @@ namespace Business.Concrete
             _bankDal = bankDal;
         }
 
+        [SecuredOperationAspect("Admin")]
         async public Task<IDataResult<List<Bank>>> GetAllAsync()
         {
             List<Bank> data;

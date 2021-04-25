@@ -13,8 +13,6 @@ namespace Core.Entities.Concrete
         public byte[] PasswordSalt { get; set; }
         public string Mail { get; set; }
         public string TelNo { get; set; }
-        public int BankId { get; set; }
-        public int ProfileId { get; set; }
         public bool Status { get; set; }
     }
 }

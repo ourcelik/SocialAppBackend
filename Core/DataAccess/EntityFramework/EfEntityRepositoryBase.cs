@@ -15,11 +15,13 @@ namespace Core.DataAccess.EntityFramework
     {
         async public Task AddAsync(TEntity entity)
         {
-            using TContext context = new();
-            var addedEntity = context.Entry(entity);
-            addedEntity.State = EntityState.Added;
-            await context.SaveChangesAsync();
-            context?.DisposeAsync();
+            using (TContext context = new TContext())
+            {
+                var addedEntity = context.Entry(entity);
+                addedEntity.State = EntityState.Added;
+                await context.SaveChangesAsync();
+            }
+            
         }
 
         async public Task DeleteAsync(TEntity entity)

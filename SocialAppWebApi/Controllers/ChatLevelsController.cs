@@ -19,7 +19,7 @@ namespace SocialAppWebApi.Controllers
             _chatLevelService = chatLevelService;
         }
 
-        [HttpGet("getall/{id}")]
+        [HttpGet("getall")]
         async public Task<IActionResult> GetAll()
         {
             var data = await _chatLevelService.GetAll();

@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
+using Core.Utilities.Security.JWT;
 
 namespace Business.DependencyResolvers.Autofac
 {
@@ -43,6 +44,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfRoomDal>().As<IRoomDal>().SingleInstance(); 
             builder.RegisterType<PhotoManager>().As<IPhotoService>().SingleInstance();
             builder.RegisterType<EfPhotoDal>().As<IPhotoDal>().SingleInstance();
+            builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

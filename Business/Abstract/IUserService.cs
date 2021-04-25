@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Results;
+﻿using Core.Entities.Concrete;
+using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace Business.Abstract
 {
     public interface IUserService
     {
-        Task<IResult> AddAsync(User entity);
-        Task<IDataResult<User>> GetByEmailAsync(string email);
-        Task<IDataResult<User>> GetByUserNameAsync(string userName);
-        Task<IDataResult<User>> GetByTelNoAsync(string telNo);
-        Task<IResult> UpdateUserAsync(User entity);
+        Task<IResult> AddAsync(Entities.Concrete.User user);
+        IDataResult<List<OperationClaim>> GetClaims(Entities.Concrete.User user);
+        Task<IDataResult<Entities.Concrete.User>> GetByEmailAsync(string email);
+        Task<IDataResult<Entities.Concrete.User>> GetByUserNameAsync(string userName);
+        Task<IDataResult<Entities.Concrete.User>> GetByTelNoAsync(string telNo);
 
     }
 }

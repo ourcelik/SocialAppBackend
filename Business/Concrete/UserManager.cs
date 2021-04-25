@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Performance;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess;
 using DataAccess.Abstract;
@@ -21,82 +22,34 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-        [PerformanceAspect(5)]
-        async public Task<IResult> AddAsync(User user)
+        public async Task<IResult> AddAsync(Entities.Concrete.User user)
         {
-            try
-            {
-                await _userDal.AddAsync(user);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult();
-            }
+            await _userDal.AddAsync(user);
             return new SuccessResult();
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
-        async public Task<IDataResult<User>> GetByEmailAsync(string email)
+        public async Task<IDataResult<Entities.Concrete.User>> GetByEmailAsync(string email)
         {
-            User user;
-            try
-            {
-                user = await _userDal.GetAsync(u => u.Mail == email);
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<User>();
-            }
-            return new SuccessDataResult<User>(user);
+            var data =  await _userDal.GetAsync(u => u.Mail == email);
+            return new SuccessDataResult<Entities.Concrete.User>(data);
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
-        async public Task<IDataResult<User>>  GetByTelNoAsync(string telNo)
+        public async Task<IDataResult<Entities.Concrete.User>> GetByTelNoAsync(string telNo)
         {
-            User user;
-            try
-            {
-                user = await _userDal.GetAsync(u => u.TelNo == telNo);
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<User>();
-            }
-            return new SuccessDataResult<User>(user);
-        }
-        [CacheAspect]
-        [PerformanceAspect(5)]
-        async public Task<IDataResult<User>> GetByUserNameAsync(string userName)
-        {
-            User user;
-            try
-            {
-                user = await _userDal.GetAsync(u => u.Username == userName);
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<User>();
-            }
-            return new SuccessDataResult<User>(user);
+            var data = await _userDal.GetAsync(u => u.TelNo == telNo);
+            return new SuccessDataResult<Entities.Concrete.User>(data);
         }
 
-        [PerformanceAspect(5)]
-        async public Task<IResult> UpdateUserAsync(User user)
+        public async Task<IDataResult<Entities.Concrete.User>> GetByUserNameAsync(string userName)
         {
-            try
-            {
-                await _userDal.UpdateAsync(user);
-            }
-            catch (Exception)
-            {
-
-                return new ErrorResult();
-            }
-            return new SuccessResult();
+            var data = await _userDal.GetAsync(u => u.Username == userName);
+            return new SuccessDataResult<Entities.Concrete.User>(data);
         }
 
-       
+        public IDataResult<List<OperationClaim>> GetClaims(Entities.Concrete.User user)
+        {
+            var data =_userDal.GetClaims(user);
+            return new SuccessDataResult<List<OperationClaim>>(data);
+        }
     }
 }
