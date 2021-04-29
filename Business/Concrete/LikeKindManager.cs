@@ -22,7 +22,7 @@ namespace Business.Concrete
 
         [CacheAspect]
         [PerformanceAspect(5)]
-        async public Task<IDataResult<List<LikeKind>>> GetLikeKinds()
+        async public Task<IDataResult<List<LikeKind>>> GetAllKindsAsync()
         {
             var data = await _likeKindDal.GetAllAsync();
             return new SuccessDataResult<List<LikeKind>>(data);

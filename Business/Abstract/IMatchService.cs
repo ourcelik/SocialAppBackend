@@ -10,9 +10,9 @@ namespace Business.Abstract
 {
     public interface IMatchService
     {
-        public Task<IDataResult<List<Match>>> GetAllMatches();
-        public Task<IDataResult<List<Match>>>  GetMatchesByUserId(int id);
-        public Task<IDataResult<List<Match>>> GetMatchesByLevelId(int id);
-        public Task<IDataResult<Match>> GetMatchById(int id);
+        public Task<IDataResult<List<Match>>> GetAllMatchesAsync();
+        public Task<IDataResult<List<Match>>> GetMatchesByUserIdAsync(int id);
+        public Task<IDataResult<List<Match>>> GetMatchesByLevelIdAsync(int id);
+        public Task<IDataResult<Match>> GetMatchByIdAsync(int id);
     }
 }
