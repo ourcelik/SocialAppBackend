@@ -44,6 +44,10 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfRoomDal>().As<IRoomDal>().SingleInstance(); 
             builder.RegisterType<PhotoManager>().As<IPhotoService>().SingleInstance();
             builder.RegisterType<EfPhotoDal>().As<IPhotoDal>().SingleInstance();
+            builder.RegisterType<MatchManager>().As<IMatchService>().SingleInstance();
+            builder.RegisterType<EfMatchDal>().As<IMatchDal>().SingleInstance();
+            builder.RegisterType<LikeKindManager>().As<ILikeKindService>().SingleInstance();
+            builder.RegisterType<EfLikeKindDal>().As<ILikeKindDal>().SingleInstance();
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
