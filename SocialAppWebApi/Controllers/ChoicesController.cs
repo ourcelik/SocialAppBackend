@@ -22,31 +22,19 @@ namespace SocialAppWebApi.Controllers
         async public Task<IActionResult> GetAll()
         {
             var data = await _choiceService.GetAll();
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getallbyquestionid/{id}")]
         async public Task<IActionResult> GetAllByQuestionId(int id)
         {
             var data = await _choiceService.GetAllByQuestionId(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getallbychoiceid/{id}")]
         async public Task<IActionResult> GetByChoiceId(int id)
         {
             var data = await _choiceService.GetByChoiceId(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
 
     }

@@ -22,11 +22,7 @@ namespace SocialAppWebApi.Controllers
         async public Task<IActionResult> GetById(int id)
         {
             var data = await _preferService.GetPreferSettingById(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
     }
 }

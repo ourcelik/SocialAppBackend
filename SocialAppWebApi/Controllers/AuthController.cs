@@ -29,11 +29,7 @@ namespace SocialAppWebApi.Controllers
                 return BadRequest(userToLogin);
             }
             var result = _authService.CreateAccessToken(userToLogin.Data);
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result);
+            return result.Success ? Ok(result.Data) : BadRequest(result);
         }
 
         [HttpPost("Register")]
@@ -46,11 +42,8 @@ namespace SocialAppWebApi.Controllers
             }
             var registerResult = await _authService.RegisterAsync(userForRegisterDto);
             var result = _authService.CreateAccessToken(registerResult.Data);
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest("Sistemde bir hata oluştu");
+
+            return result.Success ? Ok(result.Data) : BadRequest("Sistemde bir hata oluştu");
         }
 
     }

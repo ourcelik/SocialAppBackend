@@ -24,31 +24,19 @@ namespace SocialAppWebApi.Controllers
         async public Task<IActionResult> GetAllAsync()
         {
             var data = await _roomService.GetAllAsync();
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getroombyid/{id}")]
         async public Task<IActionResult> GetRoomByIdAsync(int id)
         {
             var data = await _roomService.GetRoomByIdAsync(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getroomsbylevelid/{id}")]
         async public Task<IActionResult> GetRoomsByLevelIdAsync(int id)
         {
             var data = await _roomService.GetRoomsByLevelIdAsync(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
     }
 }

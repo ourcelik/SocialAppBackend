@@ -22,11 +22,7 @@ namespace SocialAppWebApi.Controllers
         async public Task<IActionResult> GetAll()
         {
             var result = await _profileService.GetAllAsync();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+            return result.Success ? Ok(result) : BadRequest(result);
         }
     }
 }

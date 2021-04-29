@@ -23,81 +23,49 @@ namespace SocialAppWebApi.Controllers
         async public Task<IActionResult> GetAll()
         {
             var data = await _bankService.GetAllAsync();
-            if (data.Success)
-            {
-              return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getcoinsbyuserid/{id}")]
         public IActionResult GetCoinsByUserId(int id)
         {
-            var data =  _bankService.GetCoinsByUserId(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            var data = _bankService.GetCoinsByUserId(id);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getcoopercoinbyuserid/{id}")]
         public IActionResult GetCooperCoinByUserId(int id)
         {
             var data = _bankService.GetCooperCoinByUserId(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getgoldcoinbyuserid/{id}")]
         public IActionResult GetGoldCoinByUserId(int id)
         {
             var data = _bankService.GetGoldCoinByUserId(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getsilvercoinbyuserid/{id}")]
         public IActionResult GetSilverCoinByUserId(int id)
         {
             var data = _bankService.GetSilverCoinByUserId(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getcoppercoinwallets")]
         public IActionResult GetCopperCoinWallets()
         {
             var data = _bankService.GetCopperCoinWallets();
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getsilvercoinwallets")]
         public IActionResult GetSilverCoinWallets()
         {
             var data = _bankService.GetSilverCoinWallets();
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getgoldcoinwallets")]
         public IActionResult GetGoldCoinWallets()
         {
             var data = _bankService.GetGoldCoinWallets();
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
 
 

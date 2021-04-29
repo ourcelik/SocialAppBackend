@@ -23,22 +23,14 @@ namespace SocialAppWebApi.Controllers
         async public Task<IActionResult> GetAll()
         {
             var data = await _rankService.GetAll();
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
 
         [HttpGet("getbyrankid/{id}")]
         async public Task<IActionResult> GetByRankId(int id)
         {
             var data = await _rankService.GetByRankId(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
     }
 }

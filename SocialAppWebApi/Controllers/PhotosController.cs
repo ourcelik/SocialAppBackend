@@ -23,31 +23,19 @@ namespace SocialAppWebApi.Controllers
         public async Task<IActionResult> GetByPhotoId(int id)
         {
             var data = await _photoService.GetPhotoByPhotoId(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getphotosbyprofileid/{id}")]
         public async Task<IActionResult> GetPhotosByProfileId(int id)
         {
             var data = await _photoService.GetPhotosByProfileId(id);
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getall")]
         public async Task<IActionResult> GetPhotosByProfileId()
         {
             var data = await _photoService.GetAllPhotos();
-            if (data.Success)
-            {
-                return Ok(data);
-            }
-            return BadRequest(data);
+            return data.Success ? Ok(data) : BadRequest(data);
         }
     }
 }
