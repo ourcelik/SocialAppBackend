@@ -9,11 +9,11 @@ namespace SocialAppWebApi.Controllers
 {
     [Route("api/[Controller]")]
     [ApiController]
-    public class NotificationsControllercs : ControllerBase
+    public class NotificationsController : ControllerBase
     {
         INotificationService _notificationService;
 
-        public NotificationsControllercs(INotificationService notificationService)
+        public NotificationsController(INotificationService notificationService)
         {
             _notificationService = notificationService;
         }
