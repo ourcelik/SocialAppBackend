@@ -48,6 +48,14 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfMatchDal>().As<IMatchDal>().SingleInstance();
             builder.RegisterType<LikeKindManager>().As<ILikeKindService>().SingleInstance();
             builder.RegisterType<EfLikeKindDal>().As<ILikeKindDal>().SingleInstance();
+            builder.RegisterType<LikedManager>().As<ILikedService>().SingleInstance();
+            builder.RegisterType<EfLikedDal>().As<ILikedDal>().SingleInstance();
+            builder.RegisterType<ProfileQuestionManager>().As<IProfileQuestionService>().SingleInstance();
+            builder.RegisterType<EfProfileQuestionDal>().As<IProfileQuestionDal>().SingleInstance();
+            builder.RegisterType<ConstantRoomMemberManager>().As<IConstantRoomMemberService>().SingleInstance();
+            builder.RegisterType<EfCRMemberDal>().As<ICrMemberDal>().SingleInstance();
+            builder.RegisterType<RoomMemberManager>().As<IRoomMemberService>().SingleInstance();
+            builder.RegisterType<EfRMemberDal>().As<IRMemberDal>().SingleInstance();
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
