@@ -21,8 +21,6 @@ namespace Business.Concrete
             _chatLevelDal = chatLevelDal;
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
         async public Task<IDataResult<List<ChatLevel>>> GetAll()
         {
             List<ChatLevel> data;
@@ -38,8 +36,6 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ChatLevel>>(data);
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
         async public Task<IDataResult<List<ChatLevel>>> GetByChatLevel(string level)
         {
             List<ChatLevel> data;
@@ -55,8 +51,6 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ChatLevel>>(data);
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
         async public Task<IDataResult<ChatLevel>> GetByChatLevelId(int id)
         {
             ChatLevel data;
@@ -72,8 +66,6 @@ namespace Business.Concrete
             return new SuccessDataResult<ChatLevel>(data);
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
         public IDataResult<SpecificChatLevelDto> GetChatLevelByMatch(int id)
         {
             SpecificChatLevelDto data;

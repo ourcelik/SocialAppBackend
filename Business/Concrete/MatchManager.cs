@@ -44,7 +44,7 @@ namespace Business.Concrete
         [CacheAspect]
         async public Task<IDataResult<List<Match>>> GetMatchesByUserIdAsync(int UserId)
         {
-            var data = await _matchDal.GetAllAsync(m=> m.MatchUserId == UserId);
+            var data = await _matchDal.GetAllAsync(m=> m.MatchProfileId == UserId);
             return new SuccessDataResult<List<Match>>(data);
         }
     }

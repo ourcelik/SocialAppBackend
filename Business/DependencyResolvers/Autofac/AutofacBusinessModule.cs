@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
 using Core.Utilities.Security.JWT;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.DependencyResolvers.Autofac
 {
@@ -58,7 +60,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfRMemberDal>().As<IRMemberDal>().SingleInstance();
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
-
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

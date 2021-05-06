@@ -22,42 +22,42 @@ namespace Business.Concrete
 
         [CacheAspect]
         [PerformanceAspect(5)]
-        async public Task<IDataResult<List<Likes>>> GetAllAsync()
+        async public Task<IDataResult<List<Like>>> GetAllAsync()
         {
             var data = await _likedDal.GetAllAsync();
-            return new SuccessDataResult<List<Likes>>(data);
+            return new SuccessDataResult<List<Like>>(data);
         }
 
         [CacheAspect]
         [PerformanceAspect(5)]
-        async public Task<IDataResult<List<Likes>>> GetAllByKindIdAsync(int kindId)
+        async public Task<IDataResult<List<Like>>> GetAllByKindIdAsync(int kindId)
         {
             var data = await _likedDal.GetAllAsync(l => l.KindId == kindId);
-            return new SuccessDataResult<List<Likes>>(data);
+            return new SuccessDataResult<List<Like>>(data);
         }
 
         [CacheAspect]
         [PerformanceAspect(5)]
-        async public Task<IDataResult<List<Likes>>> GetAllByReceiverIdAsync(int receiverId)
+        async public Task<IDataResult<List<Like>>> GetAllByReceiverIdAsync(int receiverId)
         {
             var data = await _likedDal.GetAllAsync(l => l.ReceiverId == receiverId);
-            return new SuccessDataResult<List<Likes>>(data);
+            return new SuccessDataResult<List<Like>>(data);
         }
 
         [CacheAspect]
         [PerformanceAspect(5)]
-        async public Task<IDataResult<List<Likes>>> GetAllBySenderIdAsync(int senderId)
+        async public Task<IDataResult<List<Like>>> GetAllBySenderIdAsync(int senderId)
         {
             var data = await _likedDal.GetAllAsync(l=> l.SenderId == senderId);
-            return new SuccessDataResult<List<Likes>>(data);
+            return new SuccessDataResult<List<Like>>(data);
         }
 
         [CacheAspect]
         [PerformanceAspect(5)]
-        async public Task<IDataResult<Likes>> GetByIdAsync(int id)
+        async public Task<IDataResult<Like>> GetByIdAsync(int id)
         {
             var data = await _likedDal.GetAsync(l=> l.KindId == id);
-            return new SuccessDataResult<Likes>(data);
+            return new SuccessDataResult<Like>(data);
         }
     }
 }

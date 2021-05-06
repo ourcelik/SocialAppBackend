@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Exception;
 using Core.Aspects.Autofac.Logging;
 using Core.Aspects.Autofac.Performance;
 using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
@@ -38,8 +39,6 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Choice>>(data);
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
         [LogAspect(typeof(FileLogger))]
         async public Task<IDataResult<Choice>> GetByChoiceId(int id)
         {
@@ -56,8 +55,6 @@ namespace Business.Concrete
             return new SuccessDataResult<Choice>(data);
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
         async public Task<IDataResult<List<Choice>>> GetAllByQuestionId(int id)
         {
             List<Choice> data;
