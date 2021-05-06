@@ -1,7 +1,6 @@
 ﻿using Core.Entities.Concrete;
-using Entities.Concrete;
+using Entities.Concrete.GraphQL;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,25 +9,13 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class SocialNetworkContext:DbContext
+    public class SocialAppGraphQLContext:DbContext
     {
-        
-        public SocialNetworkContext():base()
+        public SocialAppGraphQLContext(DbContextOptions<SocialAppGraphQLContext> options) : base(options)
         {
 
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-D3TIOUO;Database=Socialnetworkdb;Trusted_Connection=True");
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
- 
-            
-        }
-
         public DbSet<Bank> Banks { get; set; }
-        public DbSet<Entities.Concrete.User> Users { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public DbSet<ConstantRoom> ConstantRooms { get; set; }
@@ -48,14 +35,5 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Gender> Genders { get; set; }
         public DbSet<ConstantRoomMember> ConstantRoomMembers { get; set; }
         public DbSet<RoomMember> RoomMembers { get; set; }
-        
-        
-
-
-
-
-
-
-
     }
 }

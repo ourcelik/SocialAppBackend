@@ -18,8 +18,8 @@ namespace DataAccess.Concrete.EntityFramework
                        select new SpecificChatLevelDto
                        {
                            Level = c.Level,
-                           MatchedUser = m.MatchUserId,
-                           MatchUser = m.MatchUserId,
+                           MatchedUser = m.MatchProfileId,
+                           MatchUser = m.MatchedProfileId,
 
                        };
             return data.SingleOrDefault();
