@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Concrete
 {
-    public class Likes : IEntity
+    public class Like : IEntity
     {
         [Key]
         public int LikeId { get; set; }

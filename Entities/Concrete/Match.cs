@@ -5,8 +5,8 @@ namespace Entities.Concrete
     public class Match : IEntity
     {
         public int MatchId { get; set; }
-        public int MatchUserId { get; set; }
-        public int MatchedUserId { get; set; }
+        public int MatchProfileId { get; set; }
+        public int MatchedProfileId { get; set; }
         public byte ChatLevelId { get; set; }
     }
 
