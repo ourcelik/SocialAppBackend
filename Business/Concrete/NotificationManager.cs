@@ -20,11 +20,10 @@ namespace Business.Concrete
             _notificationDal = notificationDal;
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
         async public Task<IDataResult<Notification>> GetNotificationSettingById(int id)
         {
             var data = await _notificationDal.GetAsync(n => n.NotificationId == id);
+
             return new SuccessDataResult<Notification>(data);
         }
     }

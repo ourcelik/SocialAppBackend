@@ -32,10 +32,10 @@ namespace SocialAppWebApi.Controllers
             var data = await _roomService.GetRoomByIdAsync(id);
             return data.Success ? Ok(data) : BadRequest(data);
         }
-        [HttpGet("getroomsbylevelid/{id}")]
-        async public Task<IActionResult> GetRoomsByLevelIdAsync(int id)
+        [HttpGet("getroomsbymainroomid/{id}")]
+        async public Task<IActionResult> GetRoomsByMainRoomIdAsync(int id)
         {
-            var data = await _roomService.GetRoomsByLevelIdAsync(id);
+            var data = await _roomService.GetRoomByMainRoomIdAsync(id);
             return data.Success ? Ok(data) : BadRequest(data);
         }
     }

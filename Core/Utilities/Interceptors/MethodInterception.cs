@@ -1,4 +1,5 @@
 ﻿using Castle.DynamicProxy;
+using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,16 @@ namespace Core.Utilities.Interceptors
             try
             {
                 invocation.Proceed();
+                //var task = invocation.ReturnValue as Task;
+                //await task.ConfigureAwait(false);
+              
+
             }
             catch (Exception e)
             {
 
                 isSuccess = false;
                 OnException(invocation, e);
-                throw;
             }
             finally
             {
@@ -39,5 +43,17 @@ namespace Core.Utilities.Interceptors
 
         }
 
+        //private async Task MainMethodExceptionControl(Task source)
+        //{
+        //    try
+        //    {
+        //        await source;
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
     }
 }

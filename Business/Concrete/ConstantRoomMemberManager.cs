@@ -20,35 +20,17 @@ namespace Business.Concrete
             _roomMemberDal = roomMemberService;
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
         async public Task<IDataResult<List<ConstantRoomMember>>> GetMembersByRank(int rankId)
         {
-            List<ConstantRoomMember> data;
-            try
-            {
-                data = await _roomMemberDal.GetAllAsync(cr => cr.RankId == rankId);
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<List<ConstantRoomMember>>();
-            }
+            var data = await _roomMemberDal.GetAllAsync(cr => cr.RankId == rankId);
+
             return new ErrorDataResult<List<ConstantRoomMember>>(data);
         }
 
-        [CacheAspect]
-        [PerformanceAspect(5)]
         async public Task<IDataResult<List<ConstantRoomMember>>> GetMembersByRoomId(int roomId)
         {
-            List<ConstantRoomMember> data;
-            try
-            {
-                data = await _roomMemberDal.GetAllAsync(cr => cr.ConstantRoomId == roomId);
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<List<ConstantRoomMember>>();
-            }
+            var data = await _roomMemberDal.GetAllAsync(cr => cr.ConstantRoomId == roomId);
+            
             return new ErrorDataResult<List<ConstantRoomMember>>(data);
         }
     }

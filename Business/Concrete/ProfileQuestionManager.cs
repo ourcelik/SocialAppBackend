@@ -23,30 +23,35 @@ namespace Business.Concrete
         async public Task<IDataResult<List<ProfileQuestion>>> GetAllAsync()
         {
             var data = await _profileQuestionDal.GetAllAsync();
+
             return new SuccessDataResult<List<ProfileQuestion>>(data);
         }
 
         async public Task<IDataResult<List<ProfileQuestion>>> GetAllByChoiceIdAsync(int choiceId)
         {
             var data = await _profileQuestionDal.GetAllAsync(pq=> pq.ChoiceId == choiceId);
+
             return new SuccessDataResult<List<ProfileQuestion>>(data);
         }
 
         async public Task<IDataResult<List<ProfileQuestion>>> GetAllByProfileIdAsync(int profileId)
         {
             var data = await _profileQuestionDal.GetAllAsync(pq => pq.ProfileId == profileId);
+
             return new SuccessDataResult<List<ProfileQuestion>>(data);
         }
 
         async public Task<IDataResult<List<ProfileQuestion>>> GetAllByQuestionIdAsync(int questionId)
         {
             var data = await _profileQuestionDal.GetAllAsync(pq => pq.QuestionId == questionId);
+
             return new SuccessDataResult<List<ProfileQuestion>>(data);
         }
 
         async public Task<IDataResult<ProfileQuestion>> GetByIdAsync(int id)
         {
             var data = await _profileQuestionDal.GetAsync(pq => pq.ProfileId == id);
+
             return new SuccessDataResult<ProfileQuestion>(data);
         }
     }

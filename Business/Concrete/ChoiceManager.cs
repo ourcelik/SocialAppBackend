@@ -26,47 +26,22 @@ namespace Business.Concrete
 
         async public Task<IDataResult<List<Choice>>> GetAll()
         {
-            List<Choice> data;
-            try
-            {
-                data = await _choiceDal.GetAllAsync();
-            }
-            catch (Exception)
-            {
-
-                return new ErrorDataResult<List<Choice>>();
-            }
+            var data = await _choiceDal.GetAllAsync();
+            
             return new SuccessDataResult<List<Choice>>(data);
         }
 
-        [LogAspect(typeof(FileLogger))]
         async public Task<IDataResult<Choice>> GetByChoiceId(int id)
         {
-            Choice data;
-            try
-            {
-                data = await _choiceDal.GetAsync(c => c.ChoiceId == id);
-            }
-            catch (Exception)
-            {
-
-                return new ErrorDataResult<Choice>();
-            }
+            var    data = await _choiceDal.GetAsync(c => c.ChoiceId == id);
+            
             return new SuccessDataResult<Choice>(data);
         }
 
         async public Task<IDataResult<List<Choice>>> GetAllByQuestionId(int id)
         {
-            List<Choice> data;
-            try
-            {
-                data = await _choiceDal.GetAllAsync(c => c.QuestionId == id);
-            }
-            catch (Exception)
-            {
-
-                return new ErrorDataResult<List<Choice>>();
-            }
+            var    data = await _choiceDal.GetAllAsync(c => c.QuestionId == id);
+            
             return new SuccessDataResult<List<Choice>>(data);
         }
     }

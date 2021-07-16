@@ -20,31 +20,31 @@ namespace Business.Concrete
             _matchDal = matchDal;
         }
 
-        [CacheAspect]
         async public Task<IDataResult<List<Match>>> GetAllMatchesAsync()
         {
             var data = await _matchDal.GetAllAsync();
+
             return new SuccessDataResult<List<Match>>(data);
         }
 
-        [CacheAspect]
         async public Task<IDataResult<Match>> GetMatchByIdAsync(int id)
         {
             var data = await _matchDal.GetAsync(m=> m.ChatLevelId == id);
+
             return new SuccessDataResult<Match>(data);
         }
 
-        [CacheAspect]
         async public Task<IDataResult<List<Match>>> GetMatchesByLevelIdAsync(int levelId)
         {
             var data = await _matchDal.GetAllAsync(m=> m.ChatLevelId == levelId);
+
             return new SuccessDataResult<List<Match>>(data);
         }
 
-        [CacheAspect]
         async public Task<IDataResult<List<Match>>> GetMatchesByUserIdAsync(int UserId)
         {
             var data = await _matchDal.GetAllAsync(m=> m.MatchProfileId == UserId);
+
             return new SuccessDataResult<List<Match>>(data);
         }
     }

@@ -19,12 +19,11 @@ namespace Business.Concrete
         {
             _likeKindDal = likeKindDal;
         }
-
-        [CacheAspect]
-        [PerformanceAspect(5)]
+        
         async public Task<IDataResult<List<LikeKind>>> GetAllKindsAsync()
         {
             var data = await _likeKindDal.GetAllAsync();
+
             return new SuccessDataResult<List<LikeKind>>(data);
         }
     }

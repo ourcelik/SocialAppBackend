@@ -20,15 +20,16 @@ namespace Business.Concrete
             _photoDal = photoDal;
         }
 
-        [CacheAspect]
         async public Task<IDataResult<Photo>> GetPhotoByPhotoId(int id)
         {
             var data = await _photoDal.GetAsync(p => p.PhotoId == id);
+
             return new SuccessDataResult<Photo>(data);
         }
         async public Task<IDataResult<List<Photo>>> GetAllPhotos()
         {
             var data = await _photoDal.GetAllAsync();
+
             return new SuccessDataResult<List<Photo>>(data);
         }
 
@@ -36,6 +37,7 @@ namespace Business.Concrete
         async public Task<IDataResult<List<Photo>>> GetPhotosByProfileId(int profileId)
         {
             var data = await _photoDal.GetAllAsync(p => p.ProfileId == profileId);
+
             return new SuccessDataResult<List<Photo>>(data);
         }
     }

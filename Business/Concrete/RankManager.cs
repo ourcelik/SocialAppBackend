@@ -26,12 +26,14 @@ namespace Business.Concrete
         async public Task<IDataResult<List<Rank>>> GetAll()
         {
             var data = await _rankDal.GetAllAsync();
+
             return new SuccessDataResult<List<Rank>>(data);
         }
 
         async public Task<IDataResult<Rank>> GetByRankId(int id)
         {
             var data = await _rankDal.GetAsync(r=> r.RankId == id);
+
             return new SuccessDataResult<Rank>(data);
         }
     }

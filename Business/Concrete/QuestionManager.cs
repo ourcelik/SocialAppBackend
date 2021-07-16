@@ -24,6 +24,7 @@ namespace Business.Concrete
         async public Task<IDataResult<List<Question>>> GetAllQuestions()
         {
             var data = await _questionDal.GetAllAsync();
+
             return new SuccessDataResult<List<Question>>(data);
         }
 

@@ -22,13 +22,13 @@ namespace SocialAppWebApi.Controllers
         [HttpGet("getall")]
         async public Task<IActionResult> GetAll()
         {
-            var data = await _chatLevelService.GetAll();
+            var data = await _chatLevelService.GetAllAsync();
             return data.Success ? Ok(data) : BadRequest(data);
         }
-        [HttpGet("getbylevel/{id}")]
+        [HttpGet("getbylevel/{level}")]
         async public Task<IActionResult> GetByChatLevel(string level)
         {
-            var data = await _chatLevelService.GetByChatLevel(level);
+            var data = await _chatLevelService.GetByChatLevelAsync(level);
             return data.Success ? Ok(data) : BadRequest(data);
         }
         [HttpGet("getbyid/{id}")]

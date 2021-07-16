@@ -21,6 +21,7 @@ namespace Business.Concrete
         async public Task<IDataResult<Prefer>> GetPreferSettingById(int id)
         {
             var data = await _preferDal.GetAsync(p => p.PreferId == id);
+
             return new SuccessDataResult<Prefer>(data);
         }
     }
