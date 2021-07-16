@@ -1,22 +1,22 @@
 using DataAccess.Concrete.EntityFramework;
 using GraphQL.Server.Ui.Voyager;
 using GraphQLWebAPI.GraphQL;
-using GraphQLWebAPI.GraphQL.Banks;
-using GraphQLWebAPI.GraphQL.ChatLevels;
-using GraphQLWebAPI.GraphQL.Choices;
-using GraphQLWebAPI.GraphQL.ConstantRoomMembers;
-using GraphQLWebAPI.GraphQL.ConstantRooms;
-using GraphQLWebAPI.GraphQL.Genders;
-using GraphQLWebAPI.GraphQL.LikeKinds;
-using GraphQLWebAPI.GraphQL.Likes;
-using GraphQLWebAPI.GraphQL.Matches;
-using GraphQLWebAPI.GraphQL.Notifications;
-using GraphQLWebAPI.GraphQL.Prefers;
-using GraphQLWebAPI.GraphQL.ProfileQuestions;
-using GraphQLWebAPI.GraphQL.Questions;
-using GraphQLWebAPI.GraphQL.Ranks;
-using GraphQLWebAPI.GraphQL.RoomMembers;
-using GraphQLWebAPI.GraphQL.Rooms;
+using GraphQLWebAPI.GraphQL.Tables.Banks;
+using GraphQLWebAPI.GraphQL.Tables.ChatLevels;
+using GraphQLWebAPI.GraphQL.Tables.Choices;
+using GraphQLWebAPI.GraphQL.Tables.ConstantRoomMembers;
+using GraphQLWebAPI.GraphQL.Tables.ConstantRooms;
+using GraphQLWebAPI.GraphQL.Tables.Genders;
+using GraphQLWebAPI.GraphQL.Tables.LikeKinds;
+using GraphQLWebAPI.GraphQL.Tables.Likes;
+using GraphQLWebAPI.GraphQL.Tables.Matches;
+using GraphQLWebAPI.GraphQL.Tables.Notifications;
+using GraphQLWebAPI.GraphQL.Tables.Prefers;
+using GraphQLWebAPI.GraphQL.Tables.ProfileQuestions;
+using GraphQLWebAPI.GraphQL.Tables.Questions;
+using GraphQLWebAPI.GraphQL.Tables.Ranks;
+using GraphQLWebAPI.GraphQL.Tables.RoomMembers;
+using GraphQLWebAPI.GraphQL.Tables.Rooms;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -63,7 +63,8 @@ namespace GraphQLWebAPI
                .AddType<RoomType>()
                .AddFiltering()
                .AddSorting()
-               .AddInMemorySubscriptions();
+               .AddInMemorySubscriptions()
+               .AddDefaultTransactionScopeHandler();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,7 +1,7 @@
 ﻿using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete.GraphQL;
-using GraphQLWebAPI.GraphQL.Choices;
-using GraphQLWebAPI.GraphQL.Questions;
+using GraphQLWebAPI.GraphQL.Tables.Choices;
+using GraphQLWebAPI.GraphQL.Tables.Questions;
 using HotChocolate;
 using HotChocolate.Data;
 using HotChocolate.Subscriptions;

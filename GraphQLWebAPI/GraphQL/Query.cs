@@ -2,6 +2,7 @@
 using Entities.Concrete.GraphQL;
 using HotChocolate;
 using HotChocolate.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,130 +17,76 @@ namespace GraphQLWebAPI.GraphQL
         [UseFiltering]
         [UseSorting]
         [GraphQLDescription("Kullanıcılara sorulan soruları getirir")]
-        public IQueryable<Question> GetQuestion([ScopedService]SocialAppGraphQLContext context)
-        {
-            return context.Questions;
-        }
+        public async Task<List<Question>> GetQuestion([ScopedService] SocialAppGraphQLContext context) => await context.Questions.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
         [GraphQLDescription("Kullanıcıya sorulan soruların cevaplarını getirir")]
-        public IQueryable<Choice> GetChoice([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.Choices;
-        }
+        public async Task<List<Choice>> GetChoice([ScopedService] SocialAppGraphQLContext context) => await context.Choices.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Bank> GetBank([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.Banks;
-        }
+        public async Task<List<Bank>> GetBank([ScopedService] SocialAppGraphQLContext context) => await context.Banks.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<ChatLevel> GetChatLevel([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.ChatLevels;
-        }
+        public async Task<List<ChatLevel>> GetChatLevel([ScopedService] SocialAppGraphQLContext context) => await context.ChatLevels.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<ConstantRoom> GetConstantRoom([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.ConstantRooms;
-        }
+        public async Task<List<ConstantRoom>> GetConstantRoom([ScopedService] SocialAppGraphQLContext context) => await context.ConstantRooms.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<ConstantRoomMember> GetConstantRoomMember([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.ConstantRoomMembers;
-        }
+        public async Task<List<ConstantRoomMember>> GetConstantRoomMember([ScopedService] SocialAppGraphQLContext context) => await context.ConstantRoomMembers.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Gender> GetGender([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.Genders;
-        }
+        public async Task<List<Gender>> GetGender([ScopedService] SocialAppGraphQLContext context) => await context.Genders.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<LikeKind> GetLikeKind([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.LikeKinds;
-        }
+        public async Task<List<LikeKind>> GetLikeKind([ScopedService] SocialAppGraphQLContext context) => await context.LikeKinds.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Like> GetLikes([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.Likes;
-        }
+        public async Task<List<Like>> GetLikes([ScopedService] SocialAppGraphQLContext context) => await context.Likes.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Match> GetMatch([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.Matches;
-        }
+        public async Task<List<Match>> GetMatch([ScopedService] SocialAppGraphQLContext context) => await context.Matches.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Notification> GetNotification([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.Notifications;
-        }
+        public async Task<List<Notification>> GetNotification([ScopedService] SocialAppGraphQLContext context) => await context.Notifications.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Photo> GetPhoto([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.Photos;
-        }
+        public async Task<List<Photo>> GetPhoto([ScopedService] SocialAppGraphQLContext context) => await context.Photos.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Prefer> GetPrefer([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.Prefers;
-        }
+        public async Task<List<Prefer>> GetPrefer([ScopedService] SocialAppGraphQLContext context) => await context.Prefers.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Profile> GetProfile([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.Profiles;
-        }
+        public async Task<List<Profile>> GetProfile([ScopedService] SocialAppGraphQLContext context) => await context.Profiles.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<ProfileQuestion> GetProfileQuestion([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.ProfileQuestions;
-        }
+        public async Task<List<ProfileQuestion>> GetProfileQuestion([ScopedService] SocialAppGraphQLContext context) => await context.ProfileQuestions.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Rank> GetRank([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.Ranks;
-        }
+        public async Task<List<Rank>> GetRank([ScopedService] SocialAppGraphQLContext context) => await context.Ranks.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Room> GetRoom([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.Rooms;
-        }
+        public async Task<List<Room>> GetRoom([ScopedService] SocialAppGraphQLContext context) => await context.Rooms.ToListAsync();
         [UseDbContext(typeof(SocialAppGraphQLContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<RoomMember> GetRoomMember([ScopedService] SocialAppGraphQLContext context)
-        {
-            return context.RoomMembers;
-        }
-       
+        public async Task<List<RoomMember>> GetRoomMember([ScopedService] SocialAppGraphQLContext context) => await context.RoomMembers.ToListAsync();
+
     }
 }
