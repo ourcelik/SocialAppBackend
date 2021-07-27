@@ -23,6 +23,12 @@ namespace Business.Concrete
             _bankDal = bankDal;
         }
 
+        public async Task<IDataResult<int>> AddBankAccount(Bank bank)
+        {
+           var data = await  _bankDal.AddAsync(bank);
+            return new SuccessDataResult<int>(data.BankId);
+        }
+
         [ExceptionLogAspect(typeof(FileLogger))]
         async public Task<IDataResult<List<Bank>>> GetAllAsync()
         {

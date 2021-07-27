@@ -16,12 +16,25 @@ namespace Business.Concrete
     public class AuthManager : IAuthService
     {
         private IUserService _userService;
+        private IBankService _bankService;
+        private IProfileService _profileService;
         private ITokenHelper _tokenHelper;
+        private IPreferService _preferService;
+        private INotificationService _notificationService;
 
-        public AuthManager(IUserService userService, ITokenHelper tokenHelper)
+        public AuthManager(IUserService userService,
+            ITokenHelper tokenHelper,
+            IBankService bankService,
+            IProfileService profileService,
+            IPreferService preferService,
+            INotificationService notificationService)
         {
             _userService = userService;
             _tokenHelper = tokenHelper;
+            _bankService = bankService;
+            _profileService = profileService;
+            _preferService = preferService;
+            _notificationService = notificationService;
         }
 
         public IDataResult<AccessToken> CreateAccessToken(Entities.Concrete.User user)
@@ -69,6 +82,27 @@ namespace Business.Concrete
 
             byte[] passwordHash, PasswordSalt;
             HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out PasswordSalt);
+            
+            IDataResult<int> accountResult = await CreateUserBankAcount();
+
+            //#region prefer
+            //var preferSettings = new Prefer
+            //{
+            //    AppVoice = false,
+            //    Autoplay = false,
+            //    GenderPreferId = 0,
+            //    LastSeen = false,
+            //    MaxAge = 30,
+            //    MaxDistance = 30,
+            //    MinAge = 18,
+            //    ShowMe = false,
+            //    Universal = false
+
+            //};
+            //var preferResult = await _preferService.AddPreferSetting(preferSettings);
+
+            //#endregion
+
             var user = new User
             {
                 Mail = userForRegisterDto.Email,
@@ -77,12 +111,25 @@ namespace Business.Concrete
                 Status = true,
                 TelNo = userForRegisterDto.PhoneNumber,
                 Username = userForRegisterDto.Username,
-                CoinBankId = 1,
+                CoinBankId = accountResult.Data,
                 ProfileId = 1
+
 
             };
             await _userService.AddAsync(user);
             return new SuccessDataResult<User>(user, "Kayıt başarılı");
+        }
+
+        private async Task<IDataResult<int>> CreateUserBankAcount()
+        {
+            var bankAccount = new Bank
+            {
+                CopperCoin = 10,
+                GoldCoin = 1,
+                SilverCoin = 100
+            };
+            var accountResult = await _bankService.AddBankAccount(bankAccount);
+            return accountResult;
         }
 
         public async Task<IResult> UserExistsAsync(string email)

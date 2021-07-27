@@ -19,5 +19,6 @@ namespace Business.Abstract
         public IDataResult<List<UserSpecificCoinDto>> GetGoldCoinWallets();
         public IDataResult<UserSpecificCoinDto> GetSilverCoinByUserId(int id);
         public IDataResult<List<UserSpecificCoinDto>> GetSilverCoinWallets();
+        public Task<IDataResult<int>> AddBankAccount(Bank bank);
     }
 }

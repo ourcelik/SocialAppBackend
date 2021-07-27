@@ -17,6 +17,12 @@ namespace Business.Concrete
             _preferDal = preferDal;
         }
 
+        public async Task<IDataResult<int>> AddPreferSetting(Prefer prefer)
+        {
+           var data =  await _preferDal.AddAsync(prefer);
+            return new SuccessDataResult<int>(data.PreferId);
+        }
+
         [CacheAspect]
         async public Task<IDataResult<Prefer>> GetPreferSettingById(int id)
         {

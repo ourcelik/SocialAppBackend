@@ -13,7 +13,7 @@ namespace Core.DataAccess.EntityFramework
         where TEntity:class,IEntity,new()
         where TContext:DbContext,new()
     {
-        async public Task AddAsync(TEntity entity)
+        async public Task<TEntity> AddAsync(TEntity entity)
         {
             using (TContext context = new TContext())
             {
@@ -21,6 +21,8 @@ namespace Core.DataAccess.EntityFramework
                 addedEntity.State = EntityState.Added;
                 await context.SaveChangesAsync();
             }
+            return entity;
+
             
         }
 
@@ -50,13 +52,14 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
-        async public Task UpdateAsync(TEntity entity)
+        async public Task<TEntity> UpdateAsync(TEntity entity)
         {
             using TContext context = new();
             var updatedEntity = context.Entry(entity);
             updatedEntity.State = EntityState.Modified;
             await context.SaveChangesAsync();
             context?.DisposeAsync();
+            return entity;
         }
     }
 }

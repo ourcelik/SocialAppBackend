@@ -19,24 +19,34 @@ namespace DataAccess.Concrete.EntityFramework
             var profile = from u in context.Users
                           join p in context.Profiles
                           on u.ProfileId equals p.ProfileId
+                          join ph in context.Photos
+                          on p.ProfilePhotoId equals ph.PhotoId
+                          join g in context.Genders
+                          on p.GenderId equals g.GenderId
                           where u.Mail == mail
                           select new UserProfileDto
                           {
-                              UserId = u.UserId,
-                              ProfileId = p.ProfileId,
                               Name = p.Name,
                               Birthdate = p.Birthdate,
                               Height = p.Height,
                               Mail = u.Mail,
                               Surname = p.Surname,
-                              ProfilePhotoId = p.ProfilePhotoId,
                               RelationStatus = p.RelationshipStatus,
                               TelNo = u.TelNo,
                               Username = u.Username,
-                              Weight = p.Weight
+                              Weight = p.Weight,
+                              ProfilePhotoUrl = ph.Url,
+                              GenderId = p.GenderId,
+                              Gender = g._Gender,
+                              ProfileId = p.ProfileId,
+                              UserId = u.UserId,
+                              ProfilePhotoId = ph.PhotoId
+                              
                           };
+            var Result = profile.SingleOrDefault();
+            
             context?.DisposeAsync();
-            return profile.SingleOrDefault();
+            return Result;
         }
 
         public UserProfileDto GetUserProfileByTelNo(string telNo)
@@ -45,21 +55,28 @@ namespace DataAccess.Concrete.EntityFramework
             var profile = from u in context.Users
                           join p in context.Profiles
                           on u.ProfileId equals p.ProfileId
+                          join ph in context.Photos
+                          on p.ProfilePhotoId equals ph.PhotoId
+                          join g in context.Genders
+                          on p.GenderId equals g.GenderId
                           where u.TelNo == telNo
                           select new UserProfileDto
                           {
-                              UserId = u.UserId,
-                              ProfileId = p.ProfileId,
                               Name = p.Name,
                               Birthdate = p.Birthdate,
                               Height = p.Height,
                               Mail = u.Mail,
                               Surname = p.Surname,
-                              ProfilePhotoId = p.ProfilePhotoId,
                               RelationStatus = p.RelationshipStatus,
                               TelNo = u.TelNo,
                               Username = u.Username,
-                              Weight = p.Weight
+                              Weight = p.Weight,
+                              ProfilePhotoUrl = ph.Url,
+                              GenderId = p.GenderId,
+                              Gender = g._Gender,
+                              ProfileId = p.ProfileId,
+                              UserId = u.UserId,
+                              ProfilePhotoId = ph.PhotoId
                           };
             context?.DisposeAsync();
             return profile.SingleOrDefault();

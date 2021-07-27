@@ -21,7 +21,7 @@ namespace Business.Concrete
             _profileDal = profileDal;
         }
 
-        async public Task<IResult> AddAsync(Profile entity)
+        async public Task<IResult> AddAsync(Entities.Concrete.Profile entity)
         {
             await _profileDal.AddAsync(entity);
 
@@ -48,19 +48,35 @@ namespace Business.Concrete
 
             return new SuccessDataResult<UserProfileDto>(user);
         }
+        public async Task<IDataResult<Entities.Concrete.Profile>> GetByIdAsync(int id)
+        {
+            var user = await _profileDal.GetAsync(p => p.ProfileId == id);
 
-        async public Task<IDataResult<List<Profile>>> GetAllAsync()
+            return new SuccessDataResult<Entities.Concrete.Profile>(user);
+        }
+
+        async public Task<IDataResult<List<Entities.Concrete.Profile>>> GetAllAsync()
         {
             var profiles = await _profileDal.GetAllAsync();
 
-            return new SuccessDataResult<List<Profile>>(profiles);
+            return new SuccessDataResult<List<Entities.Concrete.Profile>>(profiles);
         }
 
-        async public Task<IResult> UpdateUserProfileAsync(Profile entity)
+        async public Task<IDataResult<int>> UpdateUserProfileAsync(UserUpdateProfileDto entity)
         {
-            await _profileDal.UpdateAsync(entity);
+            var data = await GetByIdAsync(entity.ProfileId);
+            var profile = data.Data;
+            profile.Name = entity.Name;
+            profile.Surname = entity.Surname;
+            profile.Weight = entity.Weight;
+            profile.Height = entity.Height;
+            profile.GenderId = entity.GenderId;
+            profile.RelationshipStatus = entity.RelationshipStatus;
+            profile.Birthdate = entity.Birthdate;
 
-            return new SuccessResult();
+            var result = await _profileDal.UpdateAsync(profile);
+
+            return new SuccessDataResult<int>(profile.ProfileId);
         }
     }
 }

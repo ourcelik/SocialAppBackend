@@ -57,8 +57,10 @@ namespace Business.DependencyResolvers.Autofac
             ConstantRoomMemberTableRegister(builder);
 
             RoomMemberTableRegister(builder);
-            
+
             AuthSystemRegister(builder);
+
+            AutoMapperRegister(builder);
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
@@ -69,6 +71,13 @@ namespace Business.DependencyResolvers.Autofac
 
 
 
+        }
+
+        private static void AutoMapperRegister(ContainerBuilder builder)
+        {
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            
+            
         }
 
         private static void AuthSystemRegister(ContainerBuilder builder)
@@ -185,4 +194,5 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
         }
     }
+    
 }

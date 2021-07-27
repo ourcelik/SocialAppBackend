@@ -17,7 +17,8 @@ namespace Business.Abstract
         public IDataResult<UserProfileDto> GetByUsername(string userName);
         public Task<IResult> AddAsync(Profile entity);
         public Task<IDataResult<List<Profile>>> GetAllAsync();
-        public Task<IResult> UpdateUserProfileAsync(Profile entity);
+        public Task<IDataResult<int>> UpdateUserProfileAsync(UserUpdateProfileDto entity);
+        public Task<IDataResult<Profile>> GetByIdAsync(int id);
 
     }
 }
