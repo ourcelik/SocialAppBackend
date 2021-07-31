@@ -22,7 +22,6 @@ namespace Core.Utilities.Security.JWT
         {
             Configuration = configuration;
             _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
-            //çalışmayabilir dikkat et
         }
 
 

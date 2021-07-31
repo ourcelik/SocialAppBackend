@@ -4,6 +4,7 @@ using Core.Aspects.Autofac.Performance;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,12 @@ namespace Business.Concrete
             var data = await _photoDal.GetAllAsync(p => p.ProfileId == profileId);
 
             return new SuccessDataResult<List<Photo>>(data);
+        }
+
+        public async Task<IDataResult<int>> UpdatePhotoAsync(Photo photo)
+        {
+            var data = await _photoDal.UpdateAsync(photo);
+            return new SuccessDataResult<int>(data.PhotoId);
         }
     }
 }

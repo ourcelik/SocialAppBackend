@@ -10,5 +10,6 @@ namespace Business.Abstract
         public Task<IDataResult<List<Photo>>> GetPhotosByProfileId(int profileId);
         public Task<IDataResult<Photo>> GetPhotoByPhotoId(int id);
         public Task<IDataResult<List<Photo>>> GetAllPhotos();
+        public Task<IDataResult<int>> UpdatePhotoAsync(Photo photo);
     }
 }

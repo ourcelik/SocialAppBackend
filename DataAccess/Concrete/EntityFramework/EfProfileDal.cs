@@ -78,14 +78,47 @@ namespace DataAccess.Concrete.EntityFramework
                               UserId = u.UserId,
                               ProfilePhotoId = ph.PhotoId
                           };
+            var Result = profile.SingleOrDefault();
+
             context?.DisposeAsync();
-            return profile.SingleOrDefault();
+            return Result;
         }
 
         public UserProfileDto GetUserProfileByUsername(string userName)
         {
-            throw new NotImplementedException();
+            using SocialNetworkContext context = new();
+            var profile = from u in context.Users
+                          join p in context.Profiles
+                          on u.ProfileId equals p.ProfileId
+                          join ph in context.Photos
+                          on p.ProfilePhotoId equals ph.PhotoId
+                          join g in context.Genders
+                          on p.GenderId equals g.GenderId
+                          where u.Username == userName
+                          select new UserProfileDto
+                          {
+                              Name = p.Name,
+                              Birthdate = p.Birthdate,
+                              Height = p.Height,
+                              Mail = u.Mail,
+                              Surname = p.Surname,
+                              RelationStatus = p.RelationshipStatus,
+                              TelNo = u.TelNo,
+                              Username = u.Username,
+                              Weight = p.Weight,
+                              ProfilePhotoUrl = ph.Url,
+                              GenderId = p.GenderId,
+                              Gender = g._Gender,
+                              ProfileId = p.ProfileId,
+                              UserId = u.UserId,
+                              ProfilePhotoId = ph.PhotoId
+                          };
+            var Result = profile.SingleOrDefault();
+
+            context?.DisposeAsync();
+            return Result;
         }
     }
+    
     
 }

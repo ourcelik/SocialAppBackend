@@ -1,12 +1,16 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Performance;
+using Core.Utilities.Business;
+using Core.Utilities.IoC;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +20,12 @@ namespace Business.Concrete
     public class ProfileManager : IProfileService
     {
         readonly IProfileDal _profileDal;
+        readonly IMapper _mapper;
         public ProfileManager(IProfileDal profileDal)
         {
             _profileDal = profileDal;
+            _mapper = ServiceTool.ServiceProvider.GetService<IMapper>();
+
         }
 
         async public Task<IResult> AddAsync(Entities.Concrete.Profile entity)
@@ -61,22 +68,39 @@ namespace Business.Concrete
 
             return new SuccessDataResult<List<Entities.Concrete.Profile>>(profiles);
         }
-
         async public Task<IDataResult<int>> UpdateUserProfileAsync(UserUpdateProfileDto entity)
         {
+            if (!IsSameUser(entity))
+            {
+                throw new Exception("Permission Denied");
+            }
+
             var data = await GetByIdAsync(entity.ProfileId);
-            var profile = data.Data;
-            profile.Name = entity.Name;
-            profile.Surname = entity.Surname;
-            profile.Weight = entity.Weight;
-            profile.Height = entity.Height;
-            profile.GenderId = entity.GenderId;
-            profile.RelationshipStatus = entity.RelationshipStatus;
-            profile.Birthdate = entity.Birthdate;
+            var profile = _mapper.Map<Entities.Concrete.Profile>(entity);
+            CompleteProfile(data.Data, profile);
 
             var result = await _profileDal.UpdateAsync(profile);
 
             return new SuccessDataResult<int>(profile.ProfileId);
+        }
+
+        private static void CompleteProfile(Entities.Concrete.Profile profile, Entities.Concrete.Profile notCompleteProfile)
+        {
+            notCompleteProfile.ProfileId = profile.ProfileId;
+            notCompleteProfile.NotificationId = profile.NotificationId;
+            notCompleteProfile.PreferId = profile.PreferId;
+            notCompleteProfile.ProfilePhotoId = profile.ProfilePhotoId;
+        }
+
+        private bool IsSameUser(UserUpdateProfileDto entity)
+        {
+            var currentUsername = SecuredUserOperationHelpers.GetCurrentUsername();
+            var CurrentUserProfile = GetByUsername(currentUsername);
+            if(entity.ProfileId != CurrentUserProfile.Data.ProfileId)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

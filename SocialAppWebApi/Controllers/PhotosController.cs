@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -35,6 +36,14 @@ namespace SocialAppWebApi.Controllers
         public async Task<IActionResult> GetPhotosByProfileId()
         {
             var data = await _photoService.GetAllPhotos();
+            return data.Success ? Ok(data) : BadRequest(data);
+        }
+
+        [HttpPost("updatephoto")]
+        public async Task<IActionResult> UpdatePhoto(Photo photo)
+        {
+            var data = await _photoService.UpdatePhotoAsync(photo);
+
             return data.Success ? Ok(data) : BadRequest(data);
         }
     }
