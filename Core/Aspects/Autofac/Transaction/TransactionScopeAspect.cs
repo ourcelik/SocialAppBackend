@@ -11,13 +11,18 @@ namespace Core.Aspects.Autofac.Transaction
 {
     public class TransactionScopeAspect : MethodInterception
     {
-        public override void Intercept(IInvocation invocation)
+        public async override void Intercept(IInvocation invocation)
         {
-            TransactionScope transactionScope = new();
+            TransactionScope transactionScope = new(TransactionScopeAsyncFlowOption.Enabled);
             
                 try
                 {
                     invocation.Proceed();
+                var task = invocation.ReturnValue as Task;
+                if (task is Task)
+                {
+                    await task;
+                }
                     transactionScope.Complete();
                 }
                 catch (System.Exception)
