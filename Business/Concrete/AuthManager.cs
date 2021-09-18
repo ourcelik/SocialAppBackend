@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Aspects.Autofac.Transaction;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
@@ -77,31 +78,18 @@ namespace Business.Concrete
             return user;
         }
 
+
+        [TransactionScopeAspect]
         public async Task<IDataResult<User>> RegisterAsync(UserForRegisterDto userForRegisterDto)
         {
 
             byte[] passwordHash, PasswordSalt;
             HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out PasswordSalt);
             
-            IDataResult<int> accountResult = await CreateUserBankAcount();
-
-            //#region prefer
-            //var preferSettings = new Prefer
-            //{
-            //    AppVoice = false,
-            //    Autoplay = false,
-            //    GenderPreferId = 0,
-            //    LastSeen = false,
-            //    MaxAge = 30,
-            //    MaxDistance = 30,
-            //    MinAge = 18,
-            //    ShowMe = false,
-            //    Universal = false
-
-            //};
-            //var preferResult = await _preferService.AddPreferSetting(preferSettings);
-
-            //#endregion
+            int bankAccountId = await CreateUserBankAcountAsync();
+            int notificationSettingsId = await CreateNotificationSettingsAsync();
+            int preferSettingsId = await CreatePreferSettingsAsync();
+            int profileId = await CreateProfileAsync(notificationSettingsId,preferSettingsId);
 
             var user = new User
             {
@@ -111,16 +99,66 @@ namespace Business.Concrete
                 Status = true,
                 TelNo = userForRegisterDto.PhoneNumber,
                 Username = userForRegisterDto.Username,
-                CoinBankId = accountResult.Data,
-                ProfileId = 1
-
-
+                CoinBankId = bankAccountId,
+                ProfileId = profileId
             };
             await _userService.AddAsync(user);
             return new SuccessDataResult<User>(user, "Kayıt başarılı");
         }
 
-        private async Task<IDataResult<int>> CreateUserBankAcount()
+        private async Task<int> CreateProfileAsync(int notificationId,int preferId)
+        {
+            var profile = new Profile
+            {
+                Birthdate = DateTime.Now.AddYears(-20),
+                Height = "0.00",
+                GenderId = 1,
+                NotificationId =notificationId,
+                PreferId = preferId,
+                Name = "none",
+                ProfilePhotoId = 1,
+                RelationshipStatus = false,
+                Surname = "none",
+                Weight = "00"
+        };
+            var result = await _profileService.AddAsync(profile);
+            return result.Data;
+        }
+
+        private async Task<int> CreatePreferSettingsAsync()
+        {
+            var preferSettings = new Prefer
+            {
+                AppVoice = true,
+                Autoplay = true,
+                GenderPreferId = 1,
+                LastSeen = true,
+                MaxAge = 50,
+                MinAge = 18,
+                MaxDistance = 50,
+                ShowMe = true,
+                Universal = false
+            };
+            var result = await _preferService.AddPreferSettingsAsync(preferSettings);
+            return result.Data;
+        }
+
+        private async Task<int> CreateNotificationSettingsAsync()
+        {
+            var notificationSettings = new Notification
+            {
+                Message = false,
+                Messagelike = false,
+                NewInApp = false,
+                NewMatch = false,
+                Other = false,
+                Superlike = false,
+            };
+            var result = await _notificationService.AddNotificationSettingsAsync(notificationSettings);
+            return result.Data;
+        }
+
+        private async Task<int> CreateUserBankAcountAsync()
         {
             var bankAccount = new Bank
             {
@@ -129,7 +167,7 @@ namespace Business.Concrete
                 SilverCoin = 100
             };
             var accountResult = await _bankService.AddBankAccount(bankAccount);
-            return accountResult;
+            return accountResult.Data;
         }
 
         public async Task<IResult> UserExistsAsync(string email)

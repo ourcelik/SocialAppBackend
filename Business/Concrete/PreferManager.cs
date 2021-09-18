@@ -17,7 +17,7 @@ namespace Business.Concrete
             _preferDal = preferDal;
         }
 
-        public async Task<IDataResult<int>> AddPreferSetting(Prefer prefer)
+        public async Task<IDataResult<int>> AddPreferSettingsAsync(Prefer prefer)
         {
            var data =  await _preferDal.AddAsync(prefer);
             return new SuccessDataResult<int>(data.PreferId);
@@ -30,5 +30,19 @@ namespace Business.Concrete
 
             return new SuccessDataResult<Prefer>(data);
         }
+        async public Task<IDataResult<int>> UpdatePreferSettingsAsync(Prefer prefer)
+        {
+            var data = await _preferDal.UpdateAsync(prefer);
+
+            return new SuccessDataResult<int>(data.PreferId);
+        }
+        public IDataResult<Prefer> GetPreferSettingsByUserId(int id)
+        {
+            var data = _preferDal.getPreferSetingsByUserId(id);
+
+            return new SuccessDataResult<Prefer>(data);
+        }
+
+       
     }
 }

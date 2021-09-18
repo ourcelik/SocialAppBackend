@@ -8,6 +8,9 @@ namespace Business.Abstract
     public interface IPreferService
     {
         public Task<IDataResult<Prefer>> GetPreferSettingById(int id);
-        public Task<IDataResult<int>> AddPreferSetting(Prefer prefer);
+        public IDataResult<Prefer> GetPreferSettingsByUserId(int id);
+        public Task<IDataResult<int>> AddPreferSettingsAsync(Prefer prefer);
+        public Task<IDataResult<int>> UpdatePreferSettingsAsync(Prefer prefer);
+
     }
 }

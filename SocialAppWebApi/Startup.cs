@@ -18,7 +18,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using SocialAppWebApi.DependencyResolvers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,7 +63,6 @@ namespace SocialAppWebApi
             services.AddDependencyResolvers(new ICoreModule[]
             {
                 new CoreModule(),
-                new ApiModule()
             });
           
         }
@@ -78,6 +76,7 @@ namespace SocialAppWebApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SocialAppWebApi v1"));
             }
+            app.ConfigureCustomExceptionMiddleware();
             app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
             app.UseHttpsRedirection();
 

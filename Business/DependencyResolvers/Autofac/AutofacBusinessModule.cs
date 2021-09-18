@@ -15,6 +15,7 @@ using Core.Utilities.Interceptors;
 using Core.Utilities.Security.JWT;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper.Contrib.Autofac.DependencyInjection;
 
 namespace Business.DependencyResolvers.Autofac
 {
@@ -75,7 +76,7 @@ namespace Business.DependencyResolvers.Autofac
 
         private static void AutoMapperRegister(ContainerBuilder builder)
         {
-            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            builder.RegisterAutoMapper(System.Reflection.Assembly.GetExecutingAssembly());
             
             
         }

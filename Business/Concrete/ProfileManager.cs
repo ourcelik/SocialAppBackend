@@ -21,18 +21,18 @@ namespace Business.Concrete
     {
         readonly IProfileDal _profileDal;
         readonly IMapper _mapper;
-        public ProfileManager(IProfileDal profileDal)
+        public ProfileManager(IProfileDal profileDal,IMapper mapper)
         {
             _profileDal = profileDal;
-            _mapper = ServiceTool.ServiceProvider.GetService<IMapper>();
+            _mapper = mapper;
 
         }
 
-        async public Task<IResult> AddAsync(Entities.Concrete.Profile entity)
+        async public Task<IDataResult<int>> AddAsync(Entities.Concrete.Profile entity)
         {
-            await _profileDal.AddAsync(entity);
+            var result =  await _profileDal.AddAsync(entity);
 
-            return new SuccessResult();
+            return new SuccessDataResult<int>(result.ProfileId);
         }
 
         public IDataResult<UserProfileDto> GetByEmail(string email)
