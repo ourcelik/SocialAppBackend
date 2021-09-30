@@ -48,8 +48,12 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Gender> Genders { get; set; }
         public DbSet<ConstantRoomMember> ConstantRoomMembers { get; set; }
         public DbSet<RoomMember> RoomMembers { get; set; }
-        
-        
+        public DbSet<Post>  Posts { get; set; }
+        public DbSet<PostComment> PostComments { get; set; }
+        public DbSet<PostLike> PostLikes { get; set; }
+        public DbSet<PostInfo> PostInfos { get; set; }
+
+
 
 
 

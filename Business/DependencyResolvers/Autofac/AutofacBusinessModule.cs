@@ -63,6 +63,12 @@ namespace Business.DependencyResolvers.Autofac
 
             AutoMapperRegister(builder);
 
+            PostServiceRegister(builder);
+
+            PostInfoServiceRegister(builder);
+
+            PostLikeServiceRegister(builder);
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
                 .EnableInterfaceInterceptors(new ProxyGenerationOptions()
@@ -85,6 +91,22 @@ namespace Business.DependencyResolvers.Autofac
         {
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+        }
+
+        private static void PostServiceRegister(ContainerBuilder builder)
+        {
+            builder.RegisterType<PostManager>().As<IPostService>().SingleInstance();
+            builder.RegisterType<EfPostDal>().As<IPostDal>();
+        }
+        private static void PostInfoServiceRegister(ContainerBuilder builder)
+        {
+            builder.RegisterType<PostInfoManager>().As<IPostInfoService>().SingleInstance();
+            builder.RegisterType<EfPostInfoDal>().As<IPostInfoDal>();
+        }
+        private static void PostLikeServiceRegister(ContainerBuilder builder)
+        {
+            builder.RegisterType<PostLikeManager>().As<IPostLikeService>().SingleInstance();
+            builder.RegisterType<EfPostLikeDal>().As<IPostLikeDal>();
         }
 
         private static void RoomMemberTableRegister(ContainerBuilder builder)

@@ -12,7 +12,7 @@ namespace SocialAppWebApi.Controllers
     [ApiController]
     public class RanksController : ControllerBase
     {
-        IRankService _rankService;
+        readonly IRankService _rankService;
 
         public RanksController(IRankService rankService)
         {

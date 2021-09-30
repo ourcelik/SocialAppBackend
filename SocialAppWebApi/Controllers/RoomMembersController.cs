@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -8,7 +10,7 @@ namespace SocialAppWebApi.Controllers
     [ApiController]
     public class RoomMembersController : ControllerBase
     {
-        IRoomMemberService _RoomMemberService;
+        readonly IRoomMemberService _RoomMemberService;
 
         public RoomMembersController(IRoomMemberService roomMemberService)
         {
@@ -29,6 +31,31 @@ namespace SocialAppWebApi.Controllers
             var data = await _RoomMemberService.GetMembersByRankAsync(id);
 
             return data.Success ? Ok(data) : BadRequest(data);
+        }
+
+        [HttpPost("SubscribeUserToRoom")]
+        public async Task<IActionResult> SubscribeUserToRoom(RoomMember roomMember)
+        {
+            var data = await _RoomMemberService.SubscribeUserToRoomAsync(roomMember);
+
+            return data.Success ? Ok(data) : BadRequest(data);
+        }
+
+        [HttpPost("UnSubscribeUserToRoom")]
+        public async Task<IActionResult> UnSubscribeUserToRoom(UnSubcribeRoomMemberDto unSubcribeRoomMemberDto)
+        {
+            var data = await _RoomMemberService.UnSubscribeUserToRoom(unSubcribeRoomMemberDto);
+
+            return data.Success ? Ok(data) : BadRequest(data);
+        }
+
+        [HttpPost("IsSubscribed")]
+        public async Task<IActionResult> IsSubscribed(IsSubscribedRoomMemberDto isSubscribedRoomMemberDto)
+        {
+            var data = await _RoomMemberService.IsAlreadySubscribed(isSubscribedRoomMemberDto);
+
+            return data.Success ? Ok(data) : BadRequest(data); 
+
         }
     }
 
