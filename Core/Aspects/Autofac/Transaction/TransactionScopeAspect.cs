@@ -18,10 +18,10 @@ namespace Core.Aspects.Autofac.Transaction
                 try
                 {
                     invocation.Proceed();
-                var task = invocation.ReturnValue as Task;
-                if (task is Task)
+
+                if (invocation.ReturnValue is Task x)
                 {
-                    await task;
+                    await x;
                 }
                     transactionScope.Complete();
                 }

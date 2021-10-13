@@ -16,8 +16,11 @@ namespace Business.Abstract
         public Task<IDataResult<List<Post>>> GetPostByRoomId(int id);
         public IDataResult<List<PostDetailsWithPostInfoDto>> GetPostWithPostInfoByRoomId(int id);
         public Task<IDataResult<int>> UpdatePost(UpdatePostDto updatePost);
-        public Task<IDataResult<int>> DeletePost(int id);
+        public Task<IDataResult<int>> DeletePost(DeletePostDto deletePostDto);
         public Task<IDataResult<int>> CreatePost(Post post);
+        public Task<IDataResult<bool>> PostCanBeDeletedByThisUser(PostBelongsToDto postBelongsToDto);
+        public Task<IDataResult<Post>> GetPostByPostId(int id);
+       
 
     }
    

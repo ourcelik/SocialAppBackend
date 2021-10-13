@@ -29,10 +29,10 @@ namespace SocialAppWebApi.Controllers
             return result.Success ? Ok(result) : BadRequest(result);
         }
 
-        [HttpDelete("DeletePost/{id}")]
-        public async Task<IActionResult> DeletePost(int id)
+        [HttpDelete("DeletePost")]
+        public async Task<IActionResult> DeletePost(DeletePostDto deletePostDto)
         {
-            var result = await _postService.DeletePost(id);
+            var result = await _postService.DeletePost(deletePostDto);
 
             return result.Success ? Ok(result) : BadRequest(result);
         }
@@ -65,6 +65,22 @@ namespace SocialAppWebApi.Controllers
         public IActionResult GetPostsWithPostInfoByRoomId(int id)
         {
             var result =  _postService.GetPostWithPostInfoByRoomId(id);
+
+            return result.Success ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpGet("GetPostByPostId/{id}")]
+        public async Task<IActionResult>  GetPostByPostId(int id)
+        {
+            var result = await _postService.GetPostByPostId(id);
+
+            return result.Success ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpPost("PostCanBeDeletedByThisUser")]
+        public async Task<IActionResult> PostCanBeDeletedByThisUser(PostBelongsToDto postBelongsToDto)
+        {
+            var result = await _postService.PostCanBeDeletedByThisUser(postBelongsToDto);
 
             return result.Success ? Ok(result) : BadRequest(result);
         }

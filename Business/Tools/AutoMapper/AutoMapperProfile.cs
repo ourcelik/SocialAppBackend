@@ -18,6 +18,8 @@ namespace Business.Tools.AutoMapper
                 .ForMember(p => p.NotificationId, dto => dto.Ignore())
                 .ForMember(p => p.PreferId, dto => dto.Ignore())
                 .ForMember(p => p.ProfilePhotoId, dto => dto.Ignore());
+            CreateMap<DeletePostDto, PostBelongsToDto>();
+            CreateMap<PostBelongsToDto,DeletePostDto>();
         }
     }
 }

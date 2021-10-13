@@ -15,7 +15,7 @@ namespace Core.DataAccess.EntityFramework
     {
         async public Task<TEntity> AddAsync(TEntity entity)
         {
-            using (TContext context = new TContext())
+            using (TContext context = new ())
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
@@ -29,17 +29,17 @@ namespace Core.DataAccess.EntityFramework
         async public Task DeleteAsync(TEntity entity)
         {
             using TContext context = new();
-            var deletedEntity = context.Entry(context);
+            var deletedEntity = context.Entry(entity);
             deletedEntity.State = EntityState.Deleted;
             await context.SaveChangesAsync();
-            context?.DisposeAsync();
+            context?.Dispose();
         }
 
         async public Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter)
         {
             using(TContext context = new())
             {
-                return await context.Set<TEntity>().SingleOrDefaultAsync(filter);
+                return await context.Set<TEntity>().FirstOrDefaultAsync(filter);
             }
         }
 
@@ -58,7 +58,7 @@ namespace Core.DataAccess.EntityFramework
             var updatedEntity = context.Entry(entity);
             updatedEntity.State = EntityState.Modified;
             await context.SaveChangesAsync();
-            context?.DisposeAsync();
+            context?.Dispose();
             return entity;
         }
     }

@@ -69,6 +69,7 @@ namespace Business.DependencyResolvers.Autofac
 
             PostLikeServiceRegister(builder);
 
+            PostCommentServiceRegister(builder);
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
                 .EnableInterfaceInterceptors(new ProxyGenerationOptions()
@@ -107,6 +108,11 @@ namespace Business.DependencyResolvers.Autofac
         {
             builder.RegisterType<PostLikeManager>().As<IPostLikeService>().SingleInstance();
             builder.RegisterType<EfPostLikeDal>().As<IPostLikeDal>();
+        }
+        private static void PostCommentServiceRegister(ContainerBuilder builder)
+        {
+            builder.RegisterType<PostCommentManager>().As<IPostCommentService>().SingleInstance();
+            builder.RegisterType<EfPostCommentDal>().As<IPostCommentDal>();
         }
 
         private static void RoomMemberTableRegister(ContainerBuilder builder)

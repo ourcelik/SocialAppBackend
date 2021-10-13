@@ -16,7 +16,7 @@ namespace SocialAppWebApi.Controllers
             _postCommentService = postCommentService;
         }
 
-        [HttpGet("GetAllCommentsByPostId")]
+        [HttpGet("GetAllCommentsByPostId/{id}")]
         public async Task<IActionResult> GetAllCommentsByPostId(int id)
         {
             var result = await _postCommentService.GetCommentsByPostId(id);

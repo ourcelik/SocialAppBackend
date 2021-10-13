@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
 using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
@@ -22,11 +23,18 @@ namespace Business.Concrete
 
         readonly IPostInfoService _postInfoService;
 
-        public PostManager(IPostDal postDal,IPostInfoService postInfoService,IRoomMemberService roomMemberService)
+        readonly IMapper _mapper;
+        public PostManager(IPostDal postDal,
+            IPostInfoService postInfoService,
+            IRoomMemberService roomMemberService,
+            IMapper mapper
+            
+            )
         {
             _postDal = postDal;
             _postInfoService = postInfoService;
             _roomMemberService = roomMemberService;
+            _mapper = mapper;
         }
 
         [FillUserIdAspect(parameterIndex: 0, propName: "CreatorId")]
@@ -37,6 +45,9 @@ namespace Business.Concrete
             {
                 var InfoId = await _postInfoService.CreatePostInfoForPost(_postInfoService.GetDefaultPostInfoStructure());
                 post.RelatedInfoId = InfoId;
+                post.CreatedTime = DateTime.Now;
+                post.ShowPost = true;
+                post.IsDeleted = false;
                 var data = await _postDal.AddAsync(post);
                 return new SuccessDataResult<int>(data.PostId);
 
@@ -52,15 +63,25 @@ namespace Business.Concrete
             return IsSubscribed.Data.IsSubscribed;
         }
 
-
-        public async Task<IDataResult<int>> DeletePost(int id)
+        [FillUserIdAspect(parameterIndex:0,propName:"UserId")]
+        public async Task<IDataResult<int>> DeletePost(DeletePostDto deletePostDto)
         {
-            var post = await GetPostById(id);
-            post.IsDeleted = true;
-            await _postDal.UpdateAsync(post);
+            var Permission = await PostBelongsToThisUser(_mapper.Map<PostBelongsToDto>(deletePostDto));
 
-            return new SuccessDataResult<int>(1);
+            
+            if (Permission.isBelongsToThisUser)
+            {
+                var post = Permission.post;
+                post.IsDeleted = true;
+                await _postDal.UpdateAsync(post);
+
+                return new SuccessDataResult<int>(1);
+
+            }
+            return new ErrorDataResult<int>(default(int));
         }
+        
+
 
         public async Task<IDataResult<List<Post>>> GetAllPost()
         {
@@ -76,7 +97,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Post>>(data);
         }
 
-        //[FillUserIdAspect(parameterIndex: 0, propName: "CreatorId")]
+        [FillUserIdAspect(parameterIndex: 0, propName: "CreatorId")]
         public async Task<IDataResult<int>> UpdatePost(UpdatePostDto updatePost)
         {
             var post = await GetPostById(updatePost.PostId);
@@ -88,6 +109,8 @@ namespace Business.Concrete
 
             return new SuccessDataResult<int>(data.PostId);
         }
+
+       
 
         private async Task<Post> GetPostById(int id)
         {
@@ -101,6 +124,38 @@ namespace Business.Concrete
             var data = _postDal.GetPostsWithInfoByRelatedRoomId(id);
 
             return new SuccessDataResult<List<PostDetailsWithPostInfoDto>>(data);
+        }
+
+        [FillUserIdAspect(parameterIndex:0,propName:"UserId")]
+        public async Task<IDataResult<bool>> PostCanBeDeletedByThisUser(PostBelongsToDto postBelongsToDto)
+        {
+            var canBeDeleted = (await PostBelongsToThisUser(postBelongsToDto)).isBelongsToThisUser;
+
+            if (canBeDeleted)
+            {
+                return new SuccessDataResult<bool>(true);
+            }
+            return new SuccessDataResult<bool>(false);
+
+        }
+
+        private async Task<(bool isBelongsToThisUser, Post post)> PostBelongsToThisUser(PostBelongsToDto belongsToDto)
+        {
+            var post = await GetPostById(belongsToDto.PostId);
+
+            if (post.CreatorId == belongsToDto.UserId)
+            {
+                return (true,post);
+            }
+            return (false, post);
+
+        }
+
+        public async Task<IDataResult<Post>> GetPostByPostId(int id)
+        {
+            var post = await _postDal.GetAsync(p => p.PostId == id);
+
+            return new SuccessDataResult<Post>(post);
         }
     }
 }

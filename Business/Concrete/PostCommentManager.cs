@@ -20,7 +20,8 @@ namespace Business.Concrete
         [FillUserIdAspect(parameterIndex:0,propName:"CreatorId")]
         public async Task<IDataResult<int>> CreateComment(PostComment postComment)
         {
-            var data = await _postCommentDal.AddAsync(postComment);
+           
+            var data = await _postCommentDal.AddAsync(AddDefaultProps(postComment));
 
             return new SuccessDataResult<int>(data.CreatorId);
         }
@@ -54,6 +55,13 @@ namespace Business.Concrete
             var data = await _postCommentDal.UpdateAsync(postComment);
 
             return new SuccessDataResult<int>(data.PostCommentId);
+        }
+
+        private PostComment AddDefaultProps(PostComment postComment)
+        {
+            postComment.ShowComment = true;
+
+            return postComment;
         }
     }
 }
