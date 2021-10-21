@@ -36,5 +36,20 @@ namespace DataAccess.Concrete.EntityFramework
 
             return postDetailsList;
         }
+
+        public int GetPostOwnerByPostId(int id)
+        {
+            int userId;
+            using (SocialNetworkContext context = new())
+            {
+                var data = from p in context.Posts
+                           where p.PostId == id
+                           select p.CreatorId;
+
+                userId = data.FirstOrDefault();
+            }
+
+            return userId;
+        }
     }
 }

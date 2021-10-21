@@ -8,7 +8,9 @@ namespace DataAccess.Abstract
     public interface IPostDal : IEntityRepository<Post>
     {
         public List<PostDetailsWithPostInfoDto> GetPostsWithInfoByRelatedRoomId(int id);
-       
+        public int GetPostOwnerByPostId(int id);
+
+
     }
 
 }

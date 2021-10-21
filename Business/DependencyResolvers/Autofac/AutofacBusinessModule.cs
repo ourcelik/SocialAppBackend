@@ -63,14 +63,21 @@ namespace Business.DependencyResolvers.Autofac
 
             AutoMapperRegister(builder);
 
+            PostCommentServiceRegister(builder);
+
             PostServiceRegister(builder);
 
             PostInfoServiceRegister(builder);
 
             PostLikeServiceRegister(builder);
 
-            PostCommentServiceRegister(builder);
+
+            UserNotificationServiceRegister(builder);
+
+
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
                 .EnableInterfaceInterceptors(new ProxyGenerationOptions()
                 {
@@ -79,6 +86,15 @@ namespace Business.DependencyResolvers.Autofac
 
 
 
+
+        }
+
+
+        private void UserNotificationServiceRegister(ContainerBuilder builder)
+        {
+            builder.RegisterType<UserNotificationManager>().As<IUserNotificationService>().SingleInstance();
+            builder.RegisterType<EfUserNotificationDal>().As<IUserNotificationDal>().SingleInstance();
+            builder.RegisterType<EfCommentNotificationDal>().As<ICommentNotificationDal>().SingleInstance();
         }
 
         private static void AutoMapperRegister(ContainerBuilder builder)

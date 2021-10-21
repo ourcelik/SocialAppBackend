@@ -12,7 +12,7 @@ namespace Business.Abstract
         public Task<IDataResult<int>> UpdateComment(PostComment postComment);
         public Task<IDataResult<int>> DeleteComment(PostComment postComment);
         public Task<IDataResult<int>> CreateComment(PostComment postComment);
-
+        public Task<IDataResult<PostComment>> GetCommentById(int id);
 
     }
    

@@ -3,7 +3,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface IRoomDal : IEntityRepository<Room>
+    public interface ICommentNotificationDal : IEntityRepository<CommentNotification>
     {
 
     }

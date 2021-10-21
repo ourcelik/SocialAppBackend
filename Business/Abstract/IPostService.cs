@@ -20,7 +20,9 @@ namespace Business.Abstract
         public Task<IDataResult<int>> CreatePost(Post post);
         public Task<IDataResult<bool>> PostCanBeDeletedByThisUser(PostBelongsToDto postBelongsToDto);
         public Task<IDataResult<Post>> GetPostByPostId(int id);
-       
+        public IDataResult<int> GetPostOwnerByPostId(int id);
+
+
 
     }
    

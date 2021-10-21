@@ -157,5 +157,10 @@ namespace Business.Concrete
 
             return new SuccessDataResult<Post>(post);
         }
+
+        public IDataResult<int> GetPostOwnerByPostId(int id)
+        {
+           return new SuccessDataResult<int>(_postDal.GetPostOwnerByPostId(id));
+        }
     }
 }

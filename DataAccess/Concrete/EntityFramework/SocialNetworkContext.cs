@@ -52,6 +52,8 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<PostComment> PostComments { get; set; }
         public DbSet<PostLike> PostLikes { get; set; }
         public DbSet<PostInfo> PostInfos { get; set; }
+        public DbSet<UserNotification> UserNotifications { get; set; }
+        public DbSet<CommentNotification> CommentNotifications { get; set; }
 
 
 
